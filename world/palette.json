@@ -1,0 +1,20 @@
+{
+  "_comment": "The locked palette. Every colour in every scene SVG must appear here. tools/validate.mjs enforces this. Only a CURATE run may amend this file.",
+  "colors": {
+    "abyss": "#05040a",
+    "ink": "#0d0b14",
+    "umbra": "#1b1729",
+    "mauve": "#3b3050",
+    "heather": "#544266",
+    "dust": "#6b5f7a",
+    "haze": "#9a8fa8",
+    "bone": "#d8d0c4",
+    "parchment": "#f0e9dd",
+    "lamp": "#f2c46b",
+    "ember": "#d97757",
+    "rust": "#8f4a3c",
+    "verdigris": "#6fb3a0",
+    "deep-teal": "#2a4d4d"
+  },
+  "always_allowed": ["#ffffff", "#000000"]
+}

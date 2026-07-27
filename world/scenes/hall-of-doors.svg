@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <title>A corridor of doors receding to a vanishing point</title>
+
+  <defs>
+    <linearGradient id="hall-ceiling" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#05040a"/>
+      <stop offset="1" stop-color="#1b1729"/>
+    </linearGradient>
+    <linearGradient id="hall-wall-l" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0d0b14"/>
+      <stop offset="0.65" stop-color="#3b3050"/>
+      <stop offset="1" stop-color="#544266"/>
+    </linearGradient>
+    <linearGradient id="hall-wall-r" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0" stop-color="#0d0b14"/>
+      <stop offset="0.65" stop-color="#3b3050"/>
+      <stop offset="1" stop-color="#544266"/>
+    </linearGradient>
+    <linearGradient id="hall-floor" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#0d0b14"/>
+      <stop offset="1" stop-color="#3b3050"/>
+    </linearGradient>
+    <radialGradient id="hall-glow">
+      <stop offset="0" stop-color="#f2c46b" stop-opacity="0.75"/>
+      <stop offset="0.45" stop-color="#f2c46b" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#f2c46b" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="hall-glow-far">
+      <stop offset="0" stop-color="#f2c46b" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#f2c46b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hall-dusk" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d97757" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#f2c46b" stop-opacity="0.35"/>
+    </linearGradient>
+    <radialGradient id="hall-vignette">
+      <stop offset="0.5" stop-color="#05040a" stop-opacity="0"/>
+      <stop offset="1" stop-color="#05040a" stop-opacity="0.92"/>
+    </radialGradient>
+  </defs>
+
+  <style>
+    #lamp-near { transform-origin: 800px 100px; }
+    #lamp-near.lamp-sway { animation: hall-sway 2.8s ease-in-out; }
+    @keyframes hall-sway {
+      0%, 100% { transform: rotate(0deg); }
+      20%      { transform: rotate(3.6deg); }
+      55%      { transform: rotate(-3deg); }
+      80%      { transform: rotate(1.4deg); }
+    }
+
+    #runner.runner-lift { animation: hall-lift 2.2s ease-in-out; }
+    @keyframes hall-lift {
+      0%, 100% { transform: translateY(0); }
+      35%      { transform: translateY(-9px); }
+    }
+
+    .mote { animation: hall-drift 11s ease-in-out infinite; }
+    .mote:nth-of-type(even) { animation-duration: 15s; animation-direction: reverse; }
+    @keyframes hall-drift {
+      0%, 100% { transform: translate(0, 0); opacity: 0.25; }
+      50%      { transform: translate(14px, -22px); opacity: 0.7; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .mote { animation: none; }
+    }
+  </style>
+
+  <!-- ---- Architecture ------------------------------------------------ -->
+  <rect width="1600" height="900" fill="#05040a"/>
+  <polygon points="0,100 1600,100 980,379 620,379" fill="url(#hall-ceiling)"/>
+  <polygon points="0,100 620,379 620,536 0,800" fill="url(#hall-wall-l)"/>
+  <polygon points="1600,100 980,379 980,536 1600,800" fill="url(#hall-wall-r)"/>
+  <polygon points="0,800 620,536 980,536 1600,800" fill="url(#hall-floor)"/>
+  <polygon points="620,379 980,379 980,536 620,536" fill="#1b1729"/>
+
+  <!-- Floor boards, converging -->
+  <g stroke="#0d0b14" stroke-width="1.5" opacity="0.55">
+    <line x1="0" y1="800" x2="620" y2="536"/>
+    <line x1="300" y1="900" x2="700" y2="536"/>
+    <line x1="1600" y1="800" x2="980" y2="536"/>
+    <line x1="1300" y1="900" x2="900" y2="536"/>
+    <line x1="800" y1="900" x2="800" y2="536"/>
+  </g>
+
+  <!-- A runner down the middle of the floor -->
+  <g id="runner">
+    <polygon points="560,900 1040,900 900,536 700,536" fill="#8f4a3c" opacity="0.55"/>
+    <polygon points="596,900 1004,900 888,536 712,536" fill="#d97757" opacity="0.2"/>
+  </g>
+
+  <!-- ---- Left doors --------------------------------------------------- -->
+
+  <!-- L1: the door that opens. Dusk leaks around its edges. -->
+  <g id="door-field">
+    <polygon points="52,196 268,266 268,683 52,764" fill="#f2c46b" opacity="0.16"/>
+    <polygon points="60,205 260,274 260,675 60,755" fill="#6b5f7a"/>
+    <polygon points="68,228 252,290 252,659 68,733" fill="#3b3050"/>
+    <polygon points="68,228 252,290 252,659 68,733" fill="url(#hall-dusk)" opacity="0.28"/>
+    <polygon points="82,258 240,311 240,468 82,481" fill="#1b1729" opacity="0.6"/>
+    <polygon points="82,500 240,494 240,640 82,706" fill="#1b1729" opacity="0.6"/>
+    <circle cx="238" cy="476" r="7" fill="#f2c46b"/>
+    <polygon points="252,290 256,292 256,657 252,659" fill="#f2c46b" opacity="0.5"/>
+  </g>
+
+  <!-- L2 -->
+  <g id="door-hinges">
+    <polygon points="330,298 490,353 490,585 330,648" fill="#6b5f7a"/>
+    <polygon points="336,312 484,362 484,576 336,634" fill="#3b3050"/>
+    <polygon points="346,334 476,378 476,466 346,470" fill="#1b1729" opacity="0.55"/>
+    <polygon points="346,492 476,488 476,562 346,610" fill="#1b1729" opacity="0.55"/>
+    <circle cx="472" cy="470" r="5" fill="#9a8fa8"/>
+    <g fill="#9a8fa8" opacity="0.75">
+      <rect x="332" y="322" width="9" height="16" rx="1"/>
+      <rect x="332" y="360" width="9" height="16" rx="1"/>
+      <rect x="332" y="398" width="9" height="16" rx="1"/>
+      <rect x="332" y="436" width="9" height="16" rx="1"/>
+      <rect x="332" y="474" width="9" height="16" rx="1"/>
+      <rect x="332" y="512" width="9" height="16" rx="1"/>
+      <rect x="332" y="550" width="9" height="16" rx="1"/>
+      <rect x="332" y="588" width="9" height="16" rx="1"/>
+    </g>
+  </g>
+
+  <!-- L3 -->
+  <g id="door-handleless">
+    <polygon points="530,367 618,397 618,533 530,567" fill="#6b5f7a"/>
+    <polygon points="534,375 614,403 614,528 534,559" fill="#3b3050"/>
+    <polygon points="540,390 608,414 608,462 540,464" fill="#1b1729" opacity="0.5"/>
+    <polygon points="540,478 608,476 608,518 540,540" fill="#1b1729" opacity="0.5"/>
+  </g>
+
+  <!-- ---- Right doors -------------------------------------------------- -->
+
+  <!-- R1: warm -->
+  <g id="door-warm">
+    <polygon points="1540,205 1340,274 1340,675 1540,755" fill="#6b5f7a"/>
+    <polygon points="1532,228 1348,290 1348,659 1532,733" fill="#3b3050"/>
+    <polygon points="1518,258 1360,311 1360,468 1518,481" fill="#8f4a3c" opacity="0.45"/>
+    <polygon points="1518,500 1360,494 1360,640 1518,706" fill="#8f4a3c" opacity="0.45"/>
+    <circle cx="1362" cy="476" r="7" fill="#d97757"/>
+  </g>
+
+  <!-- R2: ajar, breathing -->
+  <g id="door-ajar">
+    <polygon points="1270,298 1110,353 1110,585 1270,648" fill="#6b5f7a"/>
+    <polygon points="1264,312 1116,362 1116,576 1264,634" fill="#3b3050"/>
+    <polygon points="1264,312 1116,362 1116,576 1264,634" fill="#05040a" opacity="0.35"/>
+    <polygon points="1116,362 1136,368 1136,570 1116,576" fill="#05040a"/>
+    <polygon points="1136,368 1148,372 1148,566 1136,570" fill="#6fb3a0" opacity="0.3"/>
+    <circle cx="1128" cy="470" r="5" fill="#9a8fa8"/>
+  </g>
+
+  <!-- R3: very small -->
+  <g id="door-small">
+    <polygon points="1070,367 982,397 982,533 1070,567" fill="#6b5f7a"/>
+    <polygon points="1066,375 986,403 986,528 1066,559" fill="#3b3050"/>
+    <rect x="1012" y="452" width="46" height="76" fill="#1b1729"/>
+    <rect x="1014" y="454" width="42" height="72" fill="#544266"/>
+    <circle cx="1020" cy="492" r="2.5" fill="#9a8fa8"/>
+  </g>
+
+  <!-- ---- The door at the end ------------------------------------------ -->
+  <g id="door-end">
+    <polygon points="745,400 855,400 855,536 745,536" fill="#6b5f7a"/>
+    <polygon points="753,411 847,411 847,525 753,525" fill="#1b1729"/>
+    <polygon points="758,418 842,418 842,462 758,462" fill="#3b3050"/>
+    <polygon points="758,474 842,474 842,518 758,518" fill="#3b3050"/>
+    <circle cx="838" cy="468" r="4" fill="#9a8fa8"/>
+  </g>
+
+  <!-- ---- Light --------------------------------------------------------
+       Anything drawn above a hotspot must be pointer-events="none" or it
+       silently swallows the click. tools/smoke.mjs catches this. -->
+  <ellipse cx="800" cy="252" rx="330" ry="250" fill="url(#hall-glow)" pointer-events="none"/>
+  <g id="lamp-near">
+    <line x1="800" y1="100" x2="800" y2="236" stroke="#6b5f7a" stroke-width="3"/>
+    <path d="M786 236 h28 l-6 12 h-16 z" fill="#6b5f7a"/>
+    <circle cx="800" cy="262" r="19" fill="#f2c46b"/>
+    <circle cx="794" cy="256" r="7" fill="#f0e9dd" opacity="0.85"/>
+  </g>
+
+  <ellipse cx="800" cy="358" rx="120" ry="95" fill="url(#hall-glow-far)" pointer-events="none"/>
+  <g id="lamp-far">
+    <line x1="800" y1="300" x2="800" y2="350" stroke="#6b5f7a" stroke-width="1.5"/>
+    <circle cx="800" cy="357" r="8" fill="#f2c46b"/>
+  </g>
+
+  <!-- ---- Air ---------------------------------------------------------- -->
+  <g fill="#d8d0c4" opacity="0.4" pointer-events="none">
+    <circle class="mote" cx="420" cy="380" r="2.5"/>
+    <circle class="mote" cx="640" cy="300" r="1.8"/>
+    <circle class="mote" cx="960" cy="420" r="2.2"/>
+    <circle class="mote" cx="1180" cy="340" r="1.6"/>
+    <circle class="mote" cx="520" cy="600" r="2"/>
+    <circle class="mote" cx="1080" cy="640" r="2.4"/>
+    <circle class="mote" cx="860" cy="200" r="1.5"/>
+  </g>
+
+  <rect width="1600" height="900" fill="url(#hall-vignette)" pointer-events="none"/>
+</svg>

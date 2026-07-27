@@ -1,0 +1,73 @@
+{
+  "id": "hall-of-doors",
+  "title": "the hall of doors",
+  "art": "world/scenes/hall-of-doors.svg",
+  "region": "hall",
+  "caption": "You have been walking a while. You do not remember starting.",
+  "hotspots": [
+    {
+      "shape": "#door-field",
+      "label": "A door with dusk leaking around its edges",
+      "action": "goto",
+      "target": "field-landing"
+    },
+    {
+      "shape": "#door-warm",
+      "label": "A door that is warm to the touch",
+      "action": "frontier",
+      "text": "Warm. Warmer than a door should be. It does not open.",
+      "hint": "Heat. Something on the other side is burning, or cooking, or alive and enormous. A furnace room, a kitchen at the end of the world, the inside of a sleeping animal."
+    },
+    {
+      "shape": "#door-hinges",
+      "label": "A door with far too many hinges",
+      "action": "frontier",
+      "text": "Eight hinges. You count them twice and get nine.",
+      "hint": "A door built to open in a direction you do not have. Behind it: a room with inconsistent geometry, or a folding place, or the same hall again but wrong."
+    },
+    {
+      "shape": "#door-ajar",
+      "label": "A door standing slightly ajar",
+      "action": "frontier",
+      "text": "It is open a finger's width, and the gap is slowly getting narrower.",
+      "hint": "Something breathing. A green light in the crack. Behind it: a grown space, wet and warm, or a greenhouse gone feral."
+    },
+    {
+      "shape": "#door-handleless",
+      "label": "A door with no handle on this side",
+      "action": "frontier",
+      "text": "No handle. Not stuck — simply not built to be opened from here.",
+      "hint": "Should open only from the far side. This is the natural EXIT of a future region, discovered from behind. Build the region first, then link back through here."
+    },
+    {
+      "shape": "#door-small",
+      "label": "A very small door, low in the wall",
+      "action": "frontier",
+      "text": "It comes up to your knee. There is a light on under it.",
+      "hint": "Scale. Behind it: somewhere built for something small, drawn at a scale that makes the player feel enormous. A lit room, occupied, tidy."
+    },
+    {
+      "shape": "#door-end",
+      "label": "The door at the end of the hall",
+      "action": "frontier",
+      "text": "The door at the end of the hall, which is always the same distance away.",
+      "hint": "Should never actually open. A late-game payoff at most. If a future run wants to use it, the reward is a corridor identical to this one with a single detail changed."
+    },
+    {
+      "shape": "#lamp-near",
+      "label": "The nearest hanging lamp",
+      "action": "animate",
+      "clip": "lamp-sway",
+      "clipMs": 2800,
+      "text": "The lamp swings. Nothing here is moving air."
+    },
+    {
+      "shape": "#runner",
+      "label": "The carpet running the length of the hall",
+      "action": "animate",
+      "clip": "runner-lift",
+      "clipMs": 2200,
+      "text": "Something passes underneath the carpet, from one end of the hall to the other."
+    }
+  ]
+}

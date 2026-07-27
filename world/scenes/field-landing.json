@@ -1,0 +1,59 @@
+{
+  "id": "field-landing",
+  "title": "the landing",
+  "art": "world/scenes/field-landing.svg",
+  "region": "field",
+  "caption": "The door closes behind you and stays where it is, in the middle of a field.",
+  "hotspots": [
+    {
+      "shape": "#beam",
+      "label": "The column of light beneath the craft",
+      "action": "goto",
+      "target": "ship-hold"
+    },
+    {
+      "shape": "#door-home",
+      "label": "The door standing alone in the grass",
+      "action": "goto",
+      "target": "hall-of-doors"
+    },
+    {
+      "shape": "#hatch",
+      "label": "A hatch on the underside of the craft",
+      "action": "animate",
+      "clip": "hatch-open",
+      "clipMs": 2600,
+      "text": "The hatch irises shut, then open, then shut. It is not for you."
+    },
+    {
+      "shape": "#dome",
+      "label": "The dome on top of the craft",
+      "action": "animate",
+      "clip": "dome-stir",
+      "clipMs": 3000,
+      "text": "Something inside the dome moves to the other side of the glass to keep looking at you."
+    },
+    {
+      "shape": "#moon",
+      "label": "The moon",
+      "action": "text",
+      "text": "The moon is full, and the wrong way round, and you cannot say how you know."
+    },
+    {
+      "shape": "#grass-shape",
+      "label": "A shape crouched in the grass",
+      "action": "animate",
+      "clip": "grass-rustle",
+      "clipMs": 1900,
+      "text": "The grass moves against the wind. Whatever was there is nearer now.",
+      "sets": "saw-the-burrow"
+    },
+    {
+      "shape": "#trees-near",
+      "label": "The trees at the edge of the field",
+      "action": "frontier",
+      "text": "The treeline is closer than it was. You decide not to test this again.",
+      "hint": "The wood. Dense, dark, on the horizon of every outdoor scene. Behind it: a forest region — paths, a clearing, something that keeps its distance. Natural home for several scenes."
+    }
+  ]
+}

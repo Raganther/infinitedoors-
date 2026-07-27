@@ -1,0 +1,100 @@
+{
+  "$comment": "Scene grammar for Infinite Doors. Enforced by tools/validate.mjs, consumed by game/engine.js. Extending this file is a deliberate act: engine + validator must change with it, in their own commit.",
+  "scene": {
+    "id": {
+      "type": "string",
+      "required": true,
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "note": "Must equal the filename stem."
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "note": "Shown faintly on entry. Lowercase, evocative, under 40 chars."
+    },
+    "art": {
+      "type": "string",
+      "required": true,
+      "note": "Repo-relative path to the scene SVG, normally world/scenes/<id>.svg"
+    },
+    "caption": {
+      "type": "string",
+      "required": false,
+      "note": "One line of prose shown on entry. Optional. Never explain the puzzle."
+    },
+    "region": {
+      "type": "string",
+      "required": false,
+      "note": "Loose grouping for the curator, e.g. 'hall', 'ship', 'seabed'."
+    },
+    "hotspots": {
+      "type": "array",
+      "required": true,
+      "minItems": 2,
+      "note": "Every scene must reward at least two clicks."
+    }
+  },
+  "hotspot": {
+    "shape": {
+      "type": "string",
+      "required": true,
+      "pattern": "^#[A-Za-z][-\\w]*$",
+      "note": "CSS id selector for an element inside the scene SVG. The drawn object IS the click target — never a separate invisible rectangle."
+    },
+    "label": {
+      "type": "string",
+      "required": true,
+      "note": "Accessible name, read by screen readers and shown as a tooltip."
+    },
+    "action": {
+      "type": "string",
+      "required": true,
+      "enum": ["goto", "animate", "text", "frontier"]
+    },
+    "target": {
+      "type": "string",
+      "required": "when action=goto",
+      "note": "Scene id to travel to. Must exist."
+    },
+    "clip": {
+      "type": "string",
+      "required": "when action=animate",
+      "note": "CSS class defined in the scene SVG's <style> block."
+    },
+    "clipTarget": {
+      "type": "string",
+      "required": false,
+      "note": "Bare element id to animate instead of the clicked element."
+    },
+    "clipMs": {
+      "type": "number",
+      "required": false,
+      "note": "Animation length in ms, used to strip the class afterwards. Default 2400."
+    },
+    "text": {
+      "type": "string",
+      "required": "when action=text or frontier",
+      "note": "Prose shown in the toast. Optional alongside animate."
+    },
+    "hint": {
+      "type": "string",
+      "required": "when action=frontier",
+      "note": "A note to the FUTURE BUILDER describing what lies behind this door. Never shown to the player. This is the seed a later EXPAND run grows from."
+    },
+    "sets": {
+      "type": "string",
+      "required": false,
+      "note": "Flag name set when this fires. Persisted in localStorage."
+    },
+    "requires": {
+      "type": "string",
+      "required": false,
+      "note": "Hotspot is inert until this flag is set. Use sparingly; a scene must never become unplayable."
+    },
+    "once": {
+      "type": "boolean",
+      "required": false,
+      "note": "Fires a single time, then the hotspot is spent."
+    }
+  }
+}

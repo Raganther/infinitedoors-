@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Infinite Doors</title>
+<meta name="description" content="A click-and-play world of doors.">
+<meta name="color-scheme" content="dark">
+<link rel="stylesheet" href="game/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230d0b14'/><rect x='10' y='6' width='12' height='22' rx='1' fill='%23f2c46b'/><circle cx='19' cy='18' r='1.2' fill='%230d0b14'/></svg>">
+</head>
+<body>
+
+<main id="stage" aria-label="Game view">
+  <div id="scene" role="img" aria-live="polite"></div>
+  <div id="veil" aria-hidden="true"></div>
+</main>
+
+<div id="chrome">
+  <h1 id="title" aria-live="polite"></h1>
+  <p id="caption" aria-live="polite"></p>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<nav id="controls" aria-label="Controls">
+  <button id="btn-back" type="button" title="Go back (Backspace)" aria-label="Go back">&larr;</button>
+  <button id="btn-hint" type="button" title="Reveal what can be clicked (H)" aria-label="Reveal clickable things">?</button>
+</nav>
+
+<noscript>
+  <p class="fallback">Infinite Doors needs JavaScript to open.</p>
+</noscript>
+
+<script type="module" src="game/engine.js"></script>
+</body>
+</html>

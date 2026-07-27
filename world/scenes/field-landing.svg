@@ -1,0 +1,224 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <title>A craft resting above a field at dusk, and a door standing alone in the grass</title>
+
+  <defs>
+    <linearGradient id="field-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d0b14"/>
+      <stop offset="0.42" stop-color="#3b3050"/>
+      <stop offset="0.78" stop-color="#8f4a3c"/>
+      <stop offset="1" stop-color="#d97757"/>
+    </linearGradient>
+    <linearGradient id="field-ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b1729"/>
+      <stop offset="0.22" stop-color="#0d0b14"/>
+      <stop offset="1" stop-color="#05040a"/>
+    </linearGradient>
+    <linearGradient id="field-beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6fb3a0" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#6fb3a0" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="field-spill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2c46b" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#f2c46b" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="field-hull" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6b5f7a"/>
+      <stop offset="0.5" stop-color="#3b3050"/>
+      <stop offset="1" stop-color="#0d0b14"/>
+    </linearGradient>
+    <radialGradient id="field-moonglow">
+      <stop offset="0" stop-color="#f0e9dd" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#f0e9dd" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="field-underglow">
+      <stop offset="0" stop-color="#6fb3a0" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#6fb3a0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="field-vignette">
+      <stop offset="0.52" stop-color="#05040a" stop-opacity="0"/>
+      <stop offset="1" stop-color="#05040a" stop-opacity="0.9"/>
+    </radialGradient>
+  </defs>
+
+  <style>
+    .star { animation: field-twinkle 5s ease-in-out infinite; }
+    .star:nth-of-type(3n) { animation-duration: 7.5s; animation-delay: -2s; }
+    .star:nth-of-type(4n) { animation-duration: 9s; animation-delay: -4s; }
+    @keyframes field-twinkle {
+      0%, 100% { opacity: 0.25; }
+      50%      { opacity: 0.95; }
+    }
+
+    #beam { animation: field-pulse 6s ease-in-out infinite; }
+    @keyframes field-pulse {
+      0%, 100% { opacity: 0.75; }
+      50%      { opacity: 1; }
+    }
+
+    #hatch-iris { transform-origin: 700px 432px; }
+    #hatch.hatch-open #hatch-iris { animation: field-iris 2.6s ease-in-out; }
+    @keyframes field-iris {
+      0%, 100% { transform: scaleX(1); opacity: 1; }
+      40%, 60% { transform: scaleX(0.08); opacity: 0.9; }
+    }
+
+    #dome-shape { transform-origin: 700px 330px; }
+    #dome.dome-stir #dome-shape { animation: field-stir 3s ease-in-out; }
+    @keyframes field-stir {
+      0%, 100% { transform: translateX(0) scaleY(1); opacity: 0.55; }
+      30%      { transform: translateX(-16px) scaleY(1.12); opacity: 0.95; }
+      70%      { transform: translateX(13px) scaleY(0.92); opacity: 0.85; }
+    }
+
+    #grass-shape.grass-rustle { animation: field-rustle 1.9s ease-in-out; }
+    @keyframes field-rustle {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      20%      { transform: translate(-7px, -4px) rotate(-4deg); }
+      55%      { transform: translate(9px, -2px) rotate(5deg); }
+      80%      { transform: translate(-3px, 0) rotate(-2deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .star, #beam { animation: none; }
+    }
+  </style>
+
+  <!-- ---- Sky ---------------------------------------------------------- -->
+  <rect width="1600" height="580" fill="url(#field-sky)"/>
+
+  <g fill="#f0e9dd">
+    <circle class="star" cx="120" cy="70" r="2.2"/>
+    <circle class="star" cx="260" cy="140" r="1.6"/>
+    <circle class="star" cx="410" cy="60" r="2"/>
+    <circle class="star" cx="540" cy="180" r="1.4"/>
+    <circle class="star" cx="680" cy="90" r="2.4"/>
+    <circle class="star" cx="880" cy="150" r="1.7"/>
+    <circle class="star" cx="1020" cy="70" r="2.1"/>
+    <circle class="star" cx="1150" cy="220" r="1.5"/>
+    <circle class="star" cx="1420" cy="110" r="2.3"/>
+    <circle class="star" cx="1520" cy="250" r="1.8"/>
+    <circle class="star" cx="330" cy="270" r="1.3"/>
+    <circle class="star" cx="960" cy="300" r="1.2"/>
+  </g>
+
+  <circle cx="1290" cy="165" r="150" fill="url(#field-moonglow)"/>
+  <g id="moon">
+    <circle cx="1290" cy="165" r="52" fill="#f0e9dd"/>
+    <circle cx="1274" cy="152" r="9" fill="#d8d0c4" opacity="0.7"/>
+    <circle cx="1305" cy="180" r="13" fill="#d8d0c4" opacity="0.55"/>
+    <circle cx="1298" cy="141" r="5" fill="#d8d0c4" opacity="0.6"/>
+  </g>
+
+  <!-- ---- Treeline ----------------------------------------------------- -->
+  <!-- Distant trees. Irregular on purpose: an even sawtooth reads as
+       mountains, not woodland. -->
+  <g id="treeline" pointer-events="none">
+    <path fill="#1b1729" opacity="0.6" d="M0 578 L0 552 L18 552 L34 508 L50 552 L72 552 L90 514 L108 552 L134 552 L152 502 L170 552 L196 552 L214 512 L232 552 L262 552 L280 506 L298 552 L326 552 L344 516 L362 552 L392 552 L410 504 L428 552 L458 552 L476 514 L494 552 L522 552 L540 508 L558 552 L588 552 L606 510 L624 552 L654 552 L672 502 L690 552 L720 552 L738 514 L756 552 L786 552 L804 506 L822 552 L852 552 L870 512 L888 552 L918 552 L936 504 L954 552 L984 552 L1002 514 L1020 552 L1050 552 L1068 508 L1086 552 L1116 552 L1134 510 L1152 552 L1182 552 L1200 502 L1218 552 L1248 552 L1266 514 L1284 552 L1314 552 L1332 506 L1350 552 L1380 552 L1398 512 L1416 552 L1446 552 L1464 504 L1482 552 L1512 552 L1530 514 L1548 552 L1578 552 L1596 508 L1600 552 L1600 578 Z"/>
+    <path fill="#05040a" d="M0 578 L0 546 L0 561 L22 476 L44 561 L47 556 L61 529 L75 556 L77 555 L88 487 L99 555 L102 553 L126 471 L150 553 L157 556 L170 486 L183 556 L185 553 L205 503 L225 553 L235 558 L252 518 L269 558 L279 561 L292 511 L305 561 L308 555 L323 517 L338 555 L342 554 L351 507 L360 554 L370 558 L384 472 L398 558 L408 554 L430 524 L452 554 L455 558 L466 523 L477 558 L487 561 L508 499 L529 561 L537 559 L546 479 L555 559 L559 554 L580 490 L601 554 L602 552 L611 479 L620 552 L625 549 L642 496 L659 549 L668 559 L678 506 L688 559 L694 559 L707 501 L720 559 L720 560 L737 532 L754 560 L759 558 L780 475 L801 558 L810 549 L830 509 L850 549 L851 549 L861 472 L871 549 L876 558 L886 508 L896 558 L904 561 L915 528 L926 561 L931 557 L949 488 L967 557 L973 556 L995 493 L1017 556 L1019 557 L1033 478 L1047 557 L1048 558 L1061 503 L1074 558 L1084 554 L1094 523 L1104 554 L1108 552 L1121 507 L1134 552 L1142 558 L1166 487 L1190 558 L1197 552 L1216 515 L1235 552 L1237 552 L1253 484 L1269 552 L1272 558 L1294 483 L1316 558 L1318 553 L1339 478 L1360 553 L1363 561 L1386 496 L1409 561 L1419 562 L1440 487 L1461 562 L1468 560 L1482 493 L1496 560 L1498 561 L1508 514 L1518 561 L1524 555 L1545 485 L1566 555 L1574 556 L1591 503 L1608 556 L1600 546 L1600 578 Z"/>
+  </g>
+
+  <!-- ---- Ground ------------------------------------------------------- -->
+  <rect y="560" width="1600" height="340" fill="url(#field-ground)"/>
+
+  <!-- A near stand of trees. The distant treeline is too wide and too tangled
+       with the craft to be a fair click target; these are its handle. -->
+  <g id="trees-near">
+    <!-- The rise the stand grows on. It also makes the group solid: a hotspot
+         with a hole through its middle is one a player can miss. -->
+    <path d="M24 652 Q118 486 214 494 Q312 486 402 652 Z" fill="#0d0b14"/>
+    <g fill="#05040a">
+      <rect x="84" y="600" width="12" height="30"/>
+      <rect x="174" y="606" width="11" height="26"/>
+      <rect x="256" y="614" width="13" height="28"/>
+      <rect x="334" y="620" width="10" height="24"/>
+    </g>
+    <g fill="#05040a">
+      <path d="M90 396 L112 473 L103 473 L119 539 L108 539 L125 616 L55 616 L72 539 L61 539 L77 473 L68 473 Z"/>
+      <path d="M180 440 L199 504 L191 504 L205 558 L195 558 L210 622 L150 622 L165 558 L155 558 L169 504 L161 504 Z"/>
+      <path d="M262 418 L286 492 L276 492 L293 556 L281 556 L300 630 L224 630 L243 556 L231 556 L248 492 L238 492 Z"/>
+      <path d="M340 462 L357 523 L350 523 L362 575 L353 575 L367 636 L313 636 L327 575 L318 575 L330 523 L323 523 Z"/>
+    </g>
+    <g fill="#2a4d4d" opacity="0.45">
+      <path d="M90 396 L103 441 L96 441 L104 480 L98 480 L106 520 L90 520 Z"/>
+      <path d="M262 418 L275 462 L269 462 L277 500 L271 500 L280 540 L262 540 Z"/>
+    </g>
+  </g>
+
+  <g stroke="#2a4d4d" stroke-width="2" opacity="0.5" stroke-linecap="round">
+    <path d="M80 900 q6 -46 -4 -76"/>
+    <path d="M180 880 q-8 -40 4 -68"/>
+    <path d="M300 900 q10 -50 -2 -80"/>
+    <path d="M1180 890 q-9 -44 3 -70"/>
+    <path d="M1330 900 q8 -48 -3 -76"/>
+    <path d="M1490 880 q-7 -42 5 -66"/>
+    <path d="M520 870 q7 -34 -3 -56"/>
+    <path d="M1020 866 q-6 -32 4 -54"/>
+  </g>
+
+  <!-- ---- The craft ----------------------------------------------------- -->
+  <ellipse cx="700" cy="470" rx="420" ry="180" fill="url(#field-underglow)" opacity="0.55"
+           pointer-events="none"/>
+
+  <g id="beam">
+    <polygon points="628,428 772,428 940,880 460,880" fill="url(#field-beam)"/>
+    <ellipse cx="700" cy="878" rx="240" ry="34" fill="#6fb3a0" opacity="0.22"/>
+  </g>
+
+  <g id="dome">
+    <path d="M590 348 a110 78 0 0 1 220 0 z" fill="#3b3050"/>
+    <path d="M600 346 a100 68 0 0 1 200 0 z" fill="#2a4d4d" opacity="0.85"/>
+    <ellipse id="dome-shape" cx="700" cy="330" rx="34" ry="26" fill="#6fb3a0" opacity="0.55"/>
+    <path d="M612 336 a88 58 0 0 1 62 -46" fill="none" stroke="#9a8fa8"
+          stroke-width="3" opacity="0.5" stroke-linecap="round"/>
+  </g>
+
+  <ellipse cx="700" cy="392" rx="252" ry="58" fill="url(#field-hull)"/>
+  <ellipse cx="700" cy="384" rx="252" ry="50" fill="#544266"/>
+  <ellipse cx="700" cy="380" rx="200" ry="34" fill="#6b5f7a" opacity="0.6"/>
+  <ellipse cx="700" cy="410" rx="236" ry="46" fill="#0d0b14"/>
+
+  <g fill="#6fb3a0">
+    <circle cx="520" cy="418" r="7"/>
+    <circle cx="590" cy="428" r="7"/>
+    <circle cx="700" cy="432" r="7" opacity="0"/>
+    <circle cx="810" cy="428" r="7"/>
+    <circle cx="880" cy="418" r="7"/>
+  </g>
+
+  <g id="hatch">
+    <ellipse cx="700" cy="432" rx="62" ry="17" fill="#1b1729"/>
+    <ellipse id="hatch-iris" cx="700" cy="432" rx="54" ry="13" fill="#6fb3a0" opacity="0.75"/>
+    <ellipse cx="700" cy="430" rx="26" ry="6" fill="#f0e9dd" opacity="0.5"/>
+  </g>
+
+  <!-- ---- The door left standing in the field --------------------------- -->
+  <polygon points="1300,812 1420,812 1500,900 1230,900" fill="url(#field-spill)" pointer-events="none"/>
+
+  <g id="door-home">
+    <rect x="1286" y="494" width="148" height="320" fill="#544266"/>
+    <rect x="1298" y="506" width="124" height="308" fill="#05040a"/>
+    <polygon points="1298,506 1360,516 1360,806 1298,814" fill="#3b3050"/>
+    <polygon points="1360,516 1372,520 1372,802 1360,806" fill="#f2c46b" opacity="0.55"/>
+    <rect x="1364" y="520" width="58" height="282" fill="#f2c46b" opacity="0.28"/>
+    <circle cx="1350" cy="668" r="6" fill="#f2c46b"/>
+    <rect x="1280" y="486" width="160" height="14" fill="#6b5f7a"/>
+  </g>
+
+  <!-- ---- Something in the grass ---------------------------------------- -->
+  <g id="grass-shape">
+    <ellipse cx="470" cy="758" rx="86" ry="26" fill="#05040a" opacity="0.75"/>
+    <path d="M400 752 q30 -50 70 -46 q42 -4 72 46 z" fill="#1b1729"/>
+    <path d="M418 750 q22 -36 52 -33 q32 -3 54 33 z" fill="#2a4d4d" opacity="0.45"/>
+    <g stroke="#2a4d4d" stroke-width="3" stroke-linecap="round">
+      <path d="M414 760 q-6 -40 8 -64"/>
+      <path d="M442 766 q4 -46 -6 -72"/>
+      <path d="M470 764 q8 -44 -2 -70"/>
+      <path d="M500 766 q-6 -42 8 -68"/>
+      <path d="M528 758 q10 -38 0 -62"/>
+    </g>
+    <circle cx="456" cy="726" r="5" fill="#6fb3a0"/>
+    <circle cx="484" cy="726" r="5" fill="#6fb3a0"/>
+  </g>
+
+  <rect width="1600" height="900" fill="url(#field-vignette)" pointer-events="none"/>
+</svg>

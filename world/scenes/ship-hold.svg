@@ -1,0 +1,216 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <title>The ribbed interior of the craft, lined with specimen jars</title>
+
+  <defs>
+    <radialGradient id="hold-air" cx="0.5" cy="0.55">
+      <stop offset="0" stop-color="#2a4d4d"/>
+      <stop offset="0.45" stop-color="#1b1729"/>
+      <stop offset="1" stop-color="#05040a"/>
+    </radialGradient>
+    <linearGradient id="hold-floor" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#05040a"/>
+      <stop offset="1" stop-color="#1b1729"/>
+    </linearGradient>
+    <linearGradient id="hold-glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6fb3a0" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#2a4d4d" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="hold-outside" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3b3050"/>
+      <stop offset="0.6" stop-color="#8f4a3c"/>
+      <stop offset="1" stop-color="#d97757"/>
+    </linearGradient>
+    <radialGradient id="hold-jarglow">
+      <stop offset="0" stop-color="#6fb3a0" stop-opacity="0.65"/>
+      <stop offset="1" stop-color="#6fb3a0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="hold-vignette">
+      <stop offset="0.55" stop-color="#05040a" stop-opacity="0"/>
+      <stop offset="1" stop-color="#05040a" stop-opacity="0.82"/>
+    </radialGradient>
+    <clipPath id="hold-porthole">
+      <circle cx="800" cy="498" r="104"/>
+    </clipPath>
+  </defs>
+
+  <style>
+    #sleeper { transform-origin: 286px 566px; }
+    #jar-tall.jar-wake #sleeper { animation: hold-wake 3.4s ease-in-out; }
+    @keyframes hold-wake {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+      25%      { transform: translate(0, -14px) scale(1.1); opacity: 0.95; }
+      50%      { transform: translate(9px, -6px) scale(1.16); opacity: 1; }
+      75%      { transform: translate(-5px, -10px) scale(1.06); opacity: 0.85; }
+    }
+
+    #jar-tall.jar-wake #jar-tall-glass { animation: hold-flare 3.4s ease-in-out; }
+    @keyframes hold-flare {
+      0%, 100% { opacity: 1; }
+      45%      { opacity: 0.55; }
+    }
+
+    #console.console-run .key { animation: hold-cascade 2.6s ease-in-out; }
+    #console.console-run .key:nth-of-type(2) { animation-delay: 0.12s; }
+    #console.console-run .key:nth-of-type(3) { animation-delay: 0.24s; }
+    #console.console-run .key:nth-of-type(4) { animation-delay: 0.36s; }
+    #console.console-run .key:nth-of-type(5) { animation-delay: 0.48s; }
+    #console.console-run .key:nth-of-type(6) { animation-delay: 0.6s; }
+    #console.console-run .key:nth-of-type(7) { animation-delay: 0.72s; }
+    #console.console-run .key:nth-of-type(8) { animation-delay: 0.84s; }
+    @keyframes hold-cascade {
+      0%, 100% { fill: #2a4d4d; }
+      30%      { fill: #f2c46b; }
+      60%      { fill: #6fb3a0; }
+    }
+
+    .breathe { animation: hold-breathe 7s ease-in-out infinite; }
+    .breathe:nth-of-type(even) { animation-duration: 9.5s; animation-delay: -3s; }
+    @keyframes hold-breathe {
+      0%, 100% { opacity: 0.55; }
+      50%      { opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .breathe { animation: none; }
+    }
+  </style>
+
+  <rect width="1600" height="900" fill="url(#hold-air)"/>
+
+  <!-- ---- Ribbed tube --------------------------------------------------- -->
+  <g fill="none" stroke="#3b3050" stroke-width="16" stroke-linecap="round">
+    <path d="M60 880 L60 380 Q60 70 800 70 Q1540 70 1540 380 L1540 880"/>
+    <path d="M200 830 L200 390 Q200 140 800 140 Q1400 140 1400 390 L1400 830"/>
+    <path d="M340 780 L340 400 Q340 210 800 210 Q1260 210 1260 400 L1260 780"/>
+    <path d="M470 730 L470 415 Q470 280 800 280 Q1130 280 1130 415 L1130 730"/>
+    <path d="M590 682 L590 430 Q590 350 800 350 Q1010 350 1010 430 L1010 682"/>
+  </g>
+  <g fill="none" stroke="#544266" stroke-width="4" stroke-linecap="round" opacity="0.7">
+    <path d="M60 880 L60 380 Q60 70 800 70 Q1540 70 1540 380 L1540 880"/>
+    <path d="M340 780 L340 400 Q340 210 800 210 Q1260 210 1260 400 L1260 780"/>
+    <path d="M590 682 L590 430 Q590 350 800 350 Q1010 350 1010 430 L1010 682"/>
+  </g>
+
+  <!-- Far bulkhead -->
+  <path d="M590 682 L590 430 Q590 350 800 350 Q1010 350 1010 430 L1010 682 Z" fill="#1b1729"/>
+
+  <!-- ---- Floor --------------------------------------------------------- -->
+  <polygon points="60,880 1540,880 1010,682 590,682" fill="url(#hold-floor)"/>
+  <g stroke="#2a4d4d" stroke-width="1.5" opacity="0.4">
+    <line x1="60" y1="880" x2="590" y2="682"/>
+    <line x1="400" y1="900" x2="700" y2="682"/>
+    <line x1="1540" y1="880" x2="1010" y2="682"/>
+    <line x1="1200" y1="900" x2="900" y2="682"/>
+  </g>
+
+  <!-- ---- Porthole to the field ----------------------------------------- -->
+  <ellipse cx="800" cy="498" rx="300" ry="240" fill="url(#hold-jarglow)" opacity="0.45"
+           pointer-events="none"/>
+  <g id="viewport">
+    <circle cx="800" cy="498" r="118" fill="#3b3050"/>
+    <circle cx="800" cy="498" r="108" fill="#0d0b14"/>
+    <g clip-path="url(#hold-porthole)">
+      <rect x="696" y="394" width="208" height="140" fill="url(#hold-outside)"/>
+      <rect x="696" y="534" width="208" height="70" fill="#05040a"/>
+      <circle cx="856" cy="432" r="17" fill="#f0e9dd"/>
+      <path d="M696 534 l22 -22 l18 20 l24 -26 l20 24 l26 -20 l22 22 l26 -18 l30 20 l20 -14 v34 h-208 z"
+            fill="#05040a"/>
+      <circle cx="770" cy="560" r="4" fill="#f2c46b" opacity="0.8"/>
+    </g>
+    <circle cx="800" cy="498" r="108" fill="none" stroke="#6b5f7a" stroke-width="6"/>
+    <g fill="#6b5f7a">
+      <circle cx="800" cy="386" r="7"/>
+      <circle cx="912" cy="498" r="7"/>
+      <circle cx="800" cy="610" r="7"/>
+      <circle cx="688" cy="498" r="7"/>
+    </g>
+  </g>
+
+  <!-- ---- Specimen rack, left -------------------------------------------- -->
+  <ellipse cx="300" cy="580" rx="260" ry="230" fill="url(#hold-jarglow)" pointer-events="none"/>
+  <rect x="120" y="672" width="360" height="20" fill="#3b3050"/>
+  <rect x="120" y="692" width="360" height="10" fill="#1b1729"/>
+
+  <g id="jar-tall">
+    <ellipse cx="286" cy="672" rx="62" ry="16" fill="#05040a" opacity="0.7"/>
+    <path id="jar-tall-glass" d="M238 466 h96 v186 a48 26 0 0 1 -96 0 z" fill="url(#hold-glass)"/>
+    <ellipse id="sleeper" cx="286" cy="566" rx="30" ry="40" fill="#1b1729"/>
+    <g fill="#05040a" opacity="0.85">
+      <circle cx="274" cy="552" r="6"/>
+      <circle cx="298" cy="552" r="6"/>
+    </g>
+    <path d="M238 466 h96 v14 h-96 z" fill="#6b5f7a"/>
+    <ellipse cx="286" cy="466" rx="48" ry="13" fill="#9a8fa8"/>
+    <ellipse cx="286" cy="463" rx="34" ry="8" fill="#544266"/>
+    <path d="M248 480 v160" stroke="#f0e9dd" stroke-width="5" opacity="0.28" stroke-linecap="round"/>
+  </g>
+
+  <g fill="url(#hold-glass)" opacity="0.85">
+    <path class="breathe" d="M370 540 h58 v112 a29 16 0 0 1 -58 0 z"/>
+    <path class="breathe" d="M144 556 h52 v96 a26 14 0 0 1 -52 0 z"/>
+  </g>
+  <g fill="#1b1729">
+    <circle class="breathe" cx="399" cy="606" r="15"/>
+    <circle class="breathe" cx="170" cy="614" r="13"/>
+  </g>
+
+  <!-- ---- Inner door ------------------------------------------------------ -->
+  <g id="door-inner">
+    <polygon points="476,424 604,450 604,668 476,706" fill="#3b3050"/>
+    <polygon points="488,442 594,464 594,656 488,688" fill="#05040a"/>
+    <polygon points="488,442 512,447 512,682 488,688" fill="#2a4d4d" opacity="0.6"/>
+    <circle cx="580" cy="566" r="6" fill="#6fb3a0"/>
+  </g>
+
+  <!-- ---- Console, right --------------------------------------------------- -->
+  <g id="console">
+    <polygon points="1064,606 1436,566 1436,760 1064,788" fill="#1b1729"/>
+    <polygon points="1064,606 1436,566 1452,596 1080,640" fill="#3b3050"/>
+    <polygon points="1080,640 1452,596 1452,614 1080,658" fill="#544266"/>
+    <g class="keys">
+      <rect class="key" x="1108" y="642" width="34" height="20" rx="3" fill="#2a4d4d" transform="rotate(-6 1108 642)"/>
+      <rect class="key" x="1158" y="636" width="34" height="20" rx="3" fill="#2a4d4d" transform="rotate(-6 1158 636)"/>
+      <rect class="key" x="1208" y="630" width="34" height="20" rx="3" fill="#2a4d4d" transform="rotate(-6 1208 630)"/>
+      <rect class="key" x="1258" y="624" width="34" height="20" rx="3" fill="#2a4d4d" transform="rotate(-6 1258 624)"/>
+      <rect class="key" x="1308" y="618" width="34" height="20" rx="3" fill="#2a4d4d" transform="rotate(-6 1308 618)"/>
+      <rect class="key" x="1358" y="612" width="34" height="20" rx="3" fill="#2a4d4d" transform="rotate(-6 1358 612)"/>
+      <rect class="key" x="1128" y="686" width="34" height="20" rx="3" fill="#2a4d4d" transform="rotate(-6 1128 686)"/>
+      <rect class="key" x="1188" y="678" width="34" height="20" rx="3" fill="#2a4d4d" transform="rotate(-6 1188 678)"/>
+    </g>
+    <g stroke="#6fb3a0" stroke-width="3" opacity="0.65" stroke-linecap="round" fill="none">
+      <path d="M1284 690 l24 -3"/>
+      <path d="M1330 684 l0 -14"/>
+      <path d="M1366 678 l18 12"/>
+      <path d="M1404 672 l-8 -12 l16 -2"/>
+    </g>
+  </g>
+
+  <!-- ---- Floor hatch ------------------------------------------------------ -->
+  <!-- Kept clear of the bottom eighth of the frame: prose sits there on
+       entry, and this is the way out. -->
+  <g id="hatch-floor">
+    <ellipse cx="800" cy="706" rx="118" ry="40" fill="#3b3050"/>
+    <ellipse cx="800" cy="704" rx="103" ry="34" fill="#1b1729"/>
+    <ellipse cx="800" cy="702" rx="80" ry="25" fill="#2a4d4d" opacity="0.8"/>
+    <ellipse cx="800" cy="700" rx="52" ry="16" fill="#6fb3a0" opacity="0.55"/>
+    <g stroke="#05040a" stroke-width="3" opacity="0.7">
+      <line x1="720" y1="702" x2="880" y2="702"/>
+      <line x1="800" y1="678" x2="800" y2="726"/>
+    </g>
+    <circle cx="800" cy="700" r="8" fill="#f2c46b" opacity="0.85"/>
+  </g>
+
+  <!-- ---- Passage up -------------------------------------------------------- -->
+  <g id="passage-up">
+    <ellipse cx="800" cy="152" rx="128" ry="42" fill="#05040a"/>
+    <ellipse cx="800" cy="150" rx="112" ry="34" fill="#0d0b14"/>
+    <ellipse cx="800" cy="146" rx="72" ry="20" fill="#2a4d4d" opacity="0.5"/>
+    <g fill="#6fb3a0" opacity="0.7">
+      <circle cx="726" cy="150" r="5"/>
+      <circle cx="800" cy="140" r="5"/>
+      <circle cx="874" cy="150" r="5"/>
+    </g>
+  </g>
+
+  <rect width="1600" height="900" fill="url(#hold-vignette)" pointer-events="none"/>
+</svg>

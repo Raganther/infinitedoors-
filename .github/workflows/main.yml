@@ -1,0 +1,79 @@
+name: check and publish
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  check:
+    name: check the world
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install
+        run: npm install --no-audit --no-fund
+
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+
+      # The manifest is generated. If it is stale, the world's memory disagrees
+      # with the world, and the next growth run will reason from bad data.
+      - name: Manifest is up to date
+        run: |
+          npm run manifest
+          git diff --exit-code world/manifest.json \
+            || { echo "::error::world/manifest.json is stale — run: npm run manifest"; exit 1; }
+
+      - name: Validate
+        run: npm run validate
+
+      - name: Play the world
+        run: npm run smoke
+
+      # Contact sheet of every scene, so a red build or a style question can be
+      # settled by looking rather than guessing.
+      - name: Screenshots
+        if: always()
+        run: node tools/shot.mjs || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: scenes
+          path: shots/
+          if-no-files-found: ignore
+          retention-days: 14
+
+  deploy:
+    name: publish
+    needs: check
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deploy
+        uses: actions/deploy-pages@v4

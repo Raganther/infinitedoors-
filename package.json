@@ -1,0 +1,17 @@
+{
+  "name": "infinite-doors",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A click-and-play world of doors that grows on a schedule.",
+  "scripts": {
+    "manifest": "node tools/build-manifest.mjs",
+    "validate": "node tools/validate.mjs",
+    "smoke": "node tools/smoke.mjs",
+    "check": "npm run manifest && npm run validate && npm run smoke",
+    "serve": "node tools/serve.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  }
+}

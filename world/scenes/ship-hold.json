@@ -1,0 +1,54 @@
+{
+  "id": "ship-hold",
+  "title": "the hold",
+  "art": "world/scenes/ship-hold.svg",
+  "region": "ship",
+  "caption": "The light sets you down inside and goes out, politely, behind you.",
+  "hotspots": [
+    {
+      "shape": "#hatch-floor",
+      "label": "The lit hatch in the floor",
+      "action": "goto",
+      "target": "field-landing"
+    },
+    {
+      "shape": "#jar-tall",
+      "label": "The tallest specimen jar",
+      "action": "animate",
+      "clip": "jar-wake",
+      "clipMs": 3400,
+      "text": "It was asleep. It is not asleep. It has been in there a very long time and it is glad to see you.",
+      "sets": "saw-the-sleeper"
+    },
+    {
+      "shape": "#console",
+      "label": "A console of unfamiliar keys",
+      "action": "animate",
+      "clip": "console-run",
+      "clipMs": 2600,
+      "text": "The keys light in sequence, wait for an answer you cannot give, and give up. Above you, something unlatches.",
+      "sets": "console-run"
+    },
+    {
+      "shape": "#viewport",
+      "label": "The porthole",
+      "action": "text",
+      "text": "Through it: the field, the treeline, the moon. And your door, still standing in the grass, waiting to be walked back through."
+    },
+    {
+      "shape": "#passage-up",
+      "label": "The opening in the ceiling",
+      "action": "frontier",
+      "requires": "console-run",
+      "text": "Open now, and dark, and much too high to reach from here.",
+      "hint": "The upper deck. Gated behind the console flag, so it must stay reachable ONLY after the console fires. Behind it: the flight deck, or a nursery, or the place the crew went."
+    },
+    {
+      "shape": "#door-inner",
+      "label": "A doorway further into the craft",
+      "action": "frontier",
+      "text": "The corridor beyond bends further than the outside of this ship allows.",
+      "hint": "Deeper into the craft, which is bigger inside than out. Behind it: a garden under grow-lights, a corridor that loops, or the hall of doors again seen from a wrong angle."
+    }
+  ]
+}
