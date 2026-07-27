@@ -9,10 +9,13 @@ Read this file top to bottom, then do exactly one growth cycle and stop.
 
 ## 0. Orient
 
-Run these first, before changing anything:
+You work on the repository's **default branch** — `main` below, but use
+whatever this repo actually calls it. Run these first, before changing
+anything:
 
 ```bash
-git pull origin main
+git checkout main && git pull origin main
+npm install                              # playwright, for the smoke test
 npm run manifest && npm run validate     # fast, no browser
 node tools/smoke.mjs                     # plays the world in a real browser
 ```
