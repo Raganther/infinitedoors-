@@ -75,5 +75,5 @@ world/scenes/ship-hold.svg     the drawing; ids are the click targets
 
 ## Publishing
 
-The site deploys to GitHub Pages on every green push to `main`. Enable it once
-under **Settings → Pages → Source → GitHub Actions**.
+The site deploys to GitHub Pages on every green push to `main`. The workflow
+turns Pages on itself the first time it runs — there is nothing to click.
