@@ -75,5 +75,7 @@ world/scenes/ship-hold.svg     the drawing; ids are the click targets
 
 ## Publishing
 
-The site deploys to GitHub Pages on every green push to `main`. The workflow
-turns Pages on itself the first time it runs — there is nothing to click.
+The site deploys to GitHub Pages on every green push to `main`. Pages has to
+be switched on once by hand — **Settings → Pages → Source → GitHub Actions**;
+a workflow token is not allowed to create the site itself. Until then the
+publish step is skipped rather than failing, so it cannot hold the build red.

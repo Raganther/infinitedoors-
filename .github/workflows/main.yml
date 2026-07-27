@@ -63,6 +63,13 @@ jobs:
     needs: check
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     runs-on: ubuntu-latest
+    # Publishing needs Pages switched on once by a human, under
+    # Settings → Pages → Source → GitHub Actions. The workflow token is not
+    # allowed to create the site itself. Until someone does that, this job
+    # fails — and a permanently red build is worse than useless, because the
+    # growth job is supposed to treat red as "stop and repair". So the world's
+    # health is the `check` job above; publishing is best effort.
+    continue-on-error: true
     permissions:
       pages: write
       id-token: write
@@ -72,10 +79,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
-        # Turn Pages on rather than requiring someone to click it in Settings.
-        # Nobody is watching this workflow; it should not need a human to start.
-        with:
-          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
