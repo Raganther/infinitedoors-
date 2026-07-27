@@ -3,6 +3,7 @@
   "title": "the hall of doors",
   "art": "world/scenes/hall-of-doors.svg",
   "region": "hall",
+  "craft": 4,
   "caption": "You have been walking a while. You do not remember starting.",
   "hotspots": [
     {

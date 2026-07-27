@@ -3,6 +3,7 @@
   "title": "the hold",
   "art": "world/scenes/ship-hold.svg",
   "region": "ship",
+  "craft": 3,
   "caption": "The light sets you down inside and goes out, politely, behind you.",
   "hotspots": [
     {

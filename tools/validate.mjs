@@ -56,6 +56,10 @@ for (const { file, data } of scenes) {
   if (data.title && data.title.length > 40) fail(where, `title over 40 chars: "${data.title}"`);
   if (!data.art) fail(where, 'missing "art"');
 
+  if (!Number.isInteger(data.craft) || data.craft < 2 || data.craft > 5) {
+    fail(where, `"craft" must be an integer 2-5 (see the ladder in STYLE.md), got ${JSON.stringify(data.craft)}`);
+  }
+
   const spots = data.hotspots;
   if (!Array.isArray(spots)) {
     fail(where, 'missing "hotspots" array');
@@ -86,6 +90,18 @@ for (const { file, data } of scenes) {
     }
     if (!/<title>/.test(svg)) {
       fail(data.art, 'missing <title> — needed for screen readers');
+    }
+
+    // Rung 4 on the craft ladder is "alive": ambient motion belonging to the
+    // place, not a triggered clip. Checking it mechanically is what stops an
+    // ENRICH run banking the number without doing the drawing.
+    if (data.craft >= 4) {
+      if (!/animation:[^;]*\binfinite\b/.test(svg)) {
+        fail(data.art, `claims craft ${data.craft} but has no ambient (infinite) animation — rung 4 is "alive", see STYLE.md`);
+      }
+      if (!/prefers-reduced-motion/.test(svg)) {
+        fail(data.art, `claims craft ${data.craft} but never honours prefers-reduced-motion — ambient motion must be optional`);
+      }
     }
 
     // Locked palette. This is the single strongest guard against style drift

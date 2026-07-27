@@ -42,11 +42,18 @@ Work down this list and take the **first** one that matches.
 2. **CURATE** — today is Sunday.
 3. **MECHANIC** — today is the 1st of the month *and* there are ≥ 12 scenes.
 4. **EXPAND** — fewer than 5 open frontiers.
-5. **DEEPEN** — some scene has fewer than 4 hotspots or fewer than 2 interactions.
-6. **WEAVE** — there are ≥ 8 scenes and the scene count is divisible by 5.
-7. **EXPAND** — otherwise.
+5. **ENRICH** — some scene is below craft 3.
+6. **DEEPEN** — some scene has fewer than 4 hotspots or fewer than 2 interactions.
+7. **ENRICH** — `counts.craftMean` is below 3.5.
+8. **WEAVE** — there are ≥ 8 scenes and the scene count is divisible by 5.
+9. **EXPAND** — otherwise.
 
 Say which one you picked, and why, in the commit message.
+
+Rules 5 and 7 are what keep the drawing pacing with the building. Every new
+scene arrives at craft 2 and drags `craftMean` down; every ENRICH run lifts it
+back. So the world naturally alternates between growing and getting better
+looking, without either being scheduled by hand.
 
 ---
 
@@ -68,7 +75,11 @@ The default. One frontier becomes a real place.
    - have **at least 4 hotspots**;
    - have **at least one `goto` back** to somewhere already reachable;
    - leave **at least one new `frontier`**, with a hint written for whoever
-     builds next. This is not optional. It is how the world keeps growing.
+     builds next. This is not optional. It is how the world keeps growing;
+   - be built to **craft 2** — composed, lit, vignetted — and say so in its
+     JSON. Do not try to reach rung 5 in one sitting. Later ENRICH runs will
+     take it the rest of the way, and they will do it better than a run that
+     is also inventing a place from scratch.
 
 ### DEEPEN — reward a second look
 
@@ -78,6 +89,45 @@ Add interactions to the artwork: things that move, respond, or say something.
 Two to four new hotspots. Consider a `sets` flag and a `requires` gate so the
 scene changes once the player has understood something. Add drawing where the
 scene is visually bare.
+
+### ENRICH — draw one scene better
+
+No new scenes, no new hotspots, no new prose. One scene's artwork goes up
+exactly one rung on the craft ladder in `STYLE.md`.
+
+`manifest.nextEnrich` has already chosen for you:
+
+```json
+"nextEnrich": { "scene": "ship-hold", "craft": 3, "raiseTo": 4 }
+```
+
+Take that scene. Read the rung you are raising it *to* — not the one above it
+— and do that work and only that work. Then set `"craft"` in the scene JSON to
+the new level.
+
+What this means in practice:
+
+- **→ 3 (layered)** — add a foreground mass that partly occludes the subject.
+  Push the background back with haze. Make the three planes read distinctly.
+- **→ 4 (alive)** — add ambient motion belonging to the place, slow and
+  low-contrast, inside `@media (prefers-reduced-motion: reduce)`. The
+  validator checks the artwork actually has an infinite animation, so you
+  cannot bank the rung without doing it.
+- **→ 5 (inhabited)** — add wear, residue, evidence. Something that says this
+  place had a life before the player arrived. Hide one detail that only
+  rewards a second visit.
+
+Three things you must not do:
+
+- **Do not re-stage the composition.** You are adding to a drawing, not
+  redrawing it. If the composition is genuinely wrong, that is CURATE.
+- **Do not touch hotspot ids or their geometry.** Every existing click target
+  must survive untouched. `npm run check` will tell you if one stops working,
+  but the point is not to break it in the first place.
+- **Do not skip a rung** to get somewhere more interesting.
+
+Afterwards, look at it — `node tools/shot.mjs <scene-id>`. If it is not
+visibly better than it was, you have not finished the run.
 
 ### WEAVE — connect what is already there
 

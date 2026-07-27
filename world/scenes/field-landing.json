@@ -3,6 +3,7 @@
   "title": "the landing",
   "art": "world/scenes/field-landing.svg",
   "region": "field",
+  "craft": 4,
   "caption": "The door closes behind you and stays where it is, in the middle of a field.",
   "hotspots": [
     {

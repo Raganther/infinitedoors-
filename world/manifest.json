@@ -6,18 +6,25 @@
     "regions": 3,
     "exits": 4,
     "interactions": 9,
-    "frontiers": 9
+    "frontiers": 9,
+    "craftMean": 3.67
   },
   "regions": [
     "field",
     "hall",
     "ship"
   ],
+  "nextEnrich": {
+    "scene": "ship-hold",
+    "craft": 3,
+    "raiseTo": 4
+  },
   "scenes": [
     {
       "id": "field-landing",
       "title": "the landing",
       "region": "field",
+      "craft": 4,
       "exits": [
         "hall-of-doors",
         "ship-hold"
@@ -38,6 +45,7 @@
       "id": "hall-of-doors",
       "title": "the hall of doors",
       "region": "hall",
+      "craft": 4,
       "exits": [
         "field-landing"
       ],
@@ -75,6 +83,7 @@
       "id": "ship-hold",
       "title": "the hold",
       "region": "ship",
+      "craft": 3,
       "exits": [
         "field-landing"
       ],

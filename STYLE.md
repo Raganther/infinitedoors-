@@ -91,6 +91,44 @@ detail will not save it.
 
 ---
 
+## The craft ladder
+
+Every scene carries a `craft` level: how finished its **artwork** is, not how
+interesting the place is. New scenes are built at 2. An ENRICH run takes the
+scene that most needs it and raises it by exactly one rung.
+
+The rungs are cumulative, and deliberately ordered by how much each one buys:
+
+**2 — Blocked in and lit.** Composition reads in silhouette. One committed
+light source. Gradients carrying the atmosphere, vignette closing the frame.
+This is the floor; nothing ships below it.
+
+**3 — Layered.** Three distinct planes — a near-black foreground mass, the
+mid-ground subject, a lighter distance. Something in front of the subject,
+partly occluding it. Depth that survives with the perspective lines removed.
+
+**4 — Alive.** Ambient motion that belongs to the place: dust in a light
+shaft, a slow tidal breath, a flicker. Slow, low-contrast, wrapped in
+`prefers-reduced-motion`. If the movement is decorative rather than
+observed, it is not rung 4 yet.
+
+**5 — Inhabited.** Detail that implies history. Wear where hands go. Evidence
+that something happened here before you arrived and will continue after you
+leave. At least one thing a player only notices the second time.
+
+Two rules keep this from becoming vandalism:
+
+- **Never skip a rung, never lower one.** If a scene looks like it needs
+  rung 5 work but sits at 3, it gets rung 4 work today and rung 5 another day.
+- **Enriching must not disturb what is there.** Hotspot ids stay put and stay
+  clickable, the composition is not re-staged, and the palette is not touched.
+  Adding is allowed; replacing is a CURATE decision.
+
+The point of the ladder is that it is a ratchet. It is always obvious which
+scene is next and which rung is next, and a scene cannot be revisited until
+the rest of the world has caught up — so hundreds of unattended runs
+accumulate instead of oscillating.
+
 ## Movement
 
 - CSS `@keyframes` inside the SVG's own `<style>` block.

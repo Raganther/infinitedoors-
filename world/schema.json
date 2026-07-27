@@ -27,6 +27,13 @@
       "required": false,
       "note": "Loose grouping for the curator, e.g. 'hall', 'ship', 'seabed'."
     },
+    "craft": {
+      "type": "integer",
+      "required": true,
+      "min": 2,
+      "max": 5,
+      "note": "How finished the ARTWORK is, on the ladder in STYLE.md. New scenes are built at 2. An ENRICH run raises exactly one scene by exactly one rung and never skips. This is a ratchet: it only ever goes up, which is what stops unattended polish runs from redrawing the same room forever."
+    },
     "hotspots": {
       "type": "array",
       "required": true,

@@ -5,6 +5,28 @@ and the fastest way for a future run to see where it has been.
 
 ---
 
+## 2026-07-27 — MECHANIC
+
+Added the craft ladder, so the drawing improves as steadily as the world
+grows. Every scene now carries a `craft` level from 2 to 5 — blocked in and
+lit, layered, alive, inhabited — and a new ENRICH run raises exactly one
+scene by exactly one rung.
+
+It is a ratchet on purpose. `manifest.nextEnrich` names the scene and the
+rung, so there is never a judgement call about what to polish next, and no
+scene can be revisited until the rest of the world has caught up. Without
+that, an unattended polish loop redraws the same room forever.
+
+Rung 4 is checked rather than claimed: a scene asserting it must really have
+ambient motion in its artwork and must really honour `prefers-reduced-motion`.
+
+Seeded honestly — the hall and the landing at 4, the hold at 3, which makes
+the hold the first thing the world will redraw.
+
+Scenes: 3 · Frontiers: 9 · Craft: 3.67
+
+---
+
 ## 2026-07-27 — SEED
 
 The world begins with three places and nine shut doors.
