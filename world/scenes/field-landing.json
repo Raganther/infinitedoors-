@@ -52,9 +52,8 @@
     {
       "shape": "#trees-near",
       "label": "The trees at the edge of the field",
-      "action": "frontier",
-      "text": "The treeline is closer than it was. You decide not to test this again.",
-      "hint": "The wood. Dense, dark, on the horizon of every outdoor scene. Behind it: a forest region — paths, a clearing, something that keeps its distance. Natural home for several scenes."
+      "action": "goto",
+      "target": "wood-path"
     }
   ]
 }

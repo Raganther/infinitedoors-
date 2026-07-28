@@ -1,0 +1,47 @@
+{
+  "id": "wood-path",
+  "title": "the wood",
+  "art": "world/scenes/wood-path.svg",
+  "region": "wood",
+  "craft": 3,
+  "caption": "There is a path. It was agreed some time ago, and not by you.",
+  "hotspots": [
+    {
+      "shape": "#path-back",
+      "label": "The gap in the trees, back toward the field",
+      "action": "goto",
+      "target": "field-landing"
+    },
+    {
+      "shape": "#clearing-gap",
+      "label": "A green glow between the trunks ahead",
+      "action": "frontier",
+      "text": "You take three steps toward it and it is no nearer. Not yet, then.",
+      "hint": "The clearing. Round, mown, deliberate — someone maintains it. Something is kept at the centre of it. This is the heart of the wood region: build it as a hub with its own doors deeper in."
+    },
+    {
+      "shape": "#pale-shape",
+      "label": "Something pale between the far trunks",
+      "action": "animate",
+      "clip": "wood-step",
+      "clipMs": 2600,
+      "text": "When the moment passes it is where it started. You are nearly sure.",
+      "sets": "saw-the-pale-thing"
+    },
+    {
+      "shape": "#lantern",
+      "label": "A lantern hanging from a branch",
+      "action": "animate",
+      "clip": "wood-flare",
+      "clipMs": 2800,
+      "text": "Lit, briefly. Whoever keeps it does not keep it for you."
+    },
+    {
+      "shape": "#burrow",
+      "label": "A hole between the roots",
+      "action": "text",
+      "requires": "saw-the-burrow",
+      "text": "The same tenant as the hole in the field. The grass at the mouth is combed flat in both directions."
+    }
+  ]
+}

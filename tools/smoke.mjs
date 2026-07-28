@@ -49,6 +49,10 @@ await page.addInitScript(() => {
 });
 
 async function open(id) {
+  // Passing through about:blank forces a real document load — a hash-only
+  // goto would neither reload the page nor re-run the storage wipe, and
+  // flags clicked in one scene would leak into the next scene's cold start.
+  await page.goto('about:blank');
   await page.goto(`${base}/#/${id}`, { waitUntil: 'load' });
   await idle();
 }

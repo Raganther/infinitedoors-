@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <title>A path between conifers at night, lit by one shaft of moonlight, with a green glow far ahead</title>
+
+  <defs>
+    <linearGradient id="wood-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#05040a"/>
+      <stop offset="0.7" stop-color="#0d0b14"/>
+      <stop offset="1" stop-color="#1b1729"/>
+    </linearGradient>
+    <linearGradient id="wood-ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b1729"/>
+      <stop offset="0.4" stop-color="#0d0b14"/>
+      <stop offset="1" stop-color="#05040a"/>
+    </linearGradient>
+    <radialGradient id="wood-clearglow">
+      <stop offset="0" stop-color="#6fb3a0" stop-opacity="0.55"/>
+      <stop offset="0.55" stop-color="#6fb3a0" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#6fb3a0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="wood-dusk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8f4a3c" stop-opacity="0.8"/>
+      <stop offset="0.6" stop-color="#d97757" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#f2c46b" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="wood-shaft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0e9dd" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#f0e9dd" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="wood-lampglow">
+      <stop offset="0" stop-color="#f2c46b" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#f2c46b" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="wood-vignette">
+      <stop offset="0.5" stop-color="#05040a" stop-opacity="0"/>
+      <stop offset="1" stop-color="#05040a" stop-opacity="0.93"/>
+    </radialGradient>
+  </defs>
+
+  <style>
+    #pale-shape { transform-origin: 1252px 480px; }
+    #pale-shape.wood-step { animation: wood-step 2.6s ease-in-out; }
+    @keyframes wood-step {
+      0%        { transform: translateX(0); opacity: 0.65; }
+      35%       { transform: translateX(-64px); opacity: 0.1; }
+      60%       { transform: translateX(-128px) scale(1.1); opacity: 0.85; }
+      85%       { transform: translateX(-128px) scale(1.1); opacity: 0.85; }
+      100%      { transform: translateX(0); opacity: 0.65; }
+    }
+
+    #lantern { transform-origin: 372px 306px; }
+    #lantern.wood-flare { animation: wood-sway 2.8s ease-in-out; }
+    #lantern.wood-flare #lantern-glow { animation: wood-flare 2.8s ease-in-out; }
+    @keyframes wood-sway {
+      0%, 100% { transform: rotate(0deg); }
+      30%      { transform: rotate(2.5deg); }
+      65%      { transform: rotate(-2deg); }
+    }
+    @keyframes wood-flare {
+      0%, 100%  { opacity: 0; }
+      15%       { opacity: 0.65; }
+      30%       { opacity: 0.4; }
+      45%       { opacity: 0.7; }
+      75%       { opacity: 0.55; }
+    }
+  </style>
+
+  <!-- ---- Sky and canopy ------------------------------------------------
+       The canopy hangs from above in drooping boughs; it must never read as
+       a horizon line. -->
+  <rect width="1600" height="620" fill="url(#wood-sky)"/>
+  <g pointer-events="none">
+    <path d="M0 0 H1600 V96 Q1560 176 1500 128 Q1470 208 1404 150 Q1350 236 1288 158
+             Q1252 244 1180 166 Q1128 252 1062 168 Q1010 240 952 160 Q908 232 848 152
+             Q800 228 738 148 Q690 236 622 156 Q566 240 504 158 Q452 232 392 150
+             Q340 224 276 146 Q224 220 158 142 Q108 208 48 138 Q24 168 0 148 Z"
+          fill="#05040a"/>
+    <path d="M0 148 Q60 196 120 160 Q190 258 262 190 Q330 286 410 206 Q470 292 548 210
+             Q612 300 694 214 Q756 296 836 208 Q898 288 976 204 Q1040 284 1118 202
+             Q1180 286 1258 200 Q1322 284 1400 198 Q1458 274 1530 192 Q1568 232 1600 204
+             V60 H0 Z" fill="#0d0b14" opacity="0.75"/>
+    <g fill="#05040a" opacity="0.9">
+      <path d="M180 96 L262 250 L212 244 L300 388 L120 372 L196 262 L142 250 Z"/>
+      <path d="M1330 90 L1414 240 L1366 234 L1452 372 L1282 358 L1354 252 L1302 240 Z"/>
+    </g>
+  </g>
+
+  <!-- ---- Ground --------------------------------------------------------- -->
+  <rect y="620" width="1600" height="280" fill="url(#wood-ground)"/>
+
+  <!-- The path, agreed rather than worn -->
+  <polygon points="560,900 1120,900 1066,604 994,604" fill="#8f4a3c" opacity="0.28"/>
+  <polygon points="660,900 1020,900 1050,640 1010,612" fill="#8f4a3c" opacity="0.16"/>
+  <g stroke="#05040a" stroke-width="2" opacity="0.5">
+    <path d="M700 880 L1006 630"/>
+    <path d="M960 890 L1046 648"/>
+  </g>
+  <g stroke="#2a4d4d" stroke-width="2" opacity="0.5" stroke-linecap="round">
+    <path d="M520 860 q-5 -26 4 -44"/>
+    <path d="M580 892 q6 -30 -3 -50"/>
+    <path d="M1120 852 q-6 -28 5 -46"/>
+    <path d="M1190 890 q5 -32 -4 -52"/>
+    <path d="M420 820 q-4 -22 3 -38"/>
+    <path d="M1300 812 q-5 -24 4 -40"/>
+  </g>
+
+  <!-- ---- Far plane: fog and distant trunks ------------------------------ -->
+  <g pointer-events="none">
+    <g fill="#544266" opacity="0.35">
+      <rect x="180" y="240" width="13" height="380"/>
+      <rect x="330" y="260" width="10" height="360"/>
+      <rect x="470" y="235" width="14" height="385"/>
+      <rect x="610" y="270" width="9" height="350"/>
+      <rect x="760" y="248" width="12" height="372"/>
+      <rect x="1180" y="240" width="13" height="380"/>
+      <rect x="1218" y="266" width="9" height="354"/>
+      <rect x="1332" y="246" width="12" height="374"/>
+      <rect x="1420" y="270" width="10" height="350"/>
+      <rect x="855" y="262" width="9" height="358"/>
+    </g>
+    <rect x="0" y="380" width="1600" height="200" fill="#9a8fa8" opacity="0.1"/>
+    <rect x="0" y="460" width="1600" height="130" fill="#9a8fa8" opacity="0.08"/>
+  </g>
+
+  <!-- ---- The clearing, ahead and not nearer ----------------------------- -->
+  <ellipse cx="1030" cy="470" rx="260" ry="230" fill="url(#wood-clearglow)" pointer-events="none"/>
+  <g id="clearing-gap">
+    <polygon points="952,300 1108,300 1092,620 968,620" fill="#1b1729"/>
+    <polygon points="968,320 1092,320 1080,600 980,600" fill="#2a4d4d" opacity="0.55"/>
+    <polygon points="988,352 1072,352 1064,586 996,586" fill="#6fb3a0" opacity="0.3"/>
+    <ellipse cx="1030" cy="588" rx="52" ry="12" fill="#6fb3a0" opacity="0.35"/>
+  </g>
+
+  <!-- ---- Moon shaft ------------------------------------------------------ -->
+  <polygon points="640,0 780,0 1000,640 830,640" fill="url(#wood-shaft)" pointer-events="none"/>
+
+  <!-- ---- Mid plane: conifers, not posts ------------------------------------ -->
+  <g fill="#1b1729">
+    <path d="M240 620 L252 190 L282 190 L296 620 Z"/>
+    <path d="M520 640 L534 170 L568 170 L584 640 Z"/>
+    <path d="M840 632 L852 210 L880 210 L894 632 Z"/>
+    <path d="M1150 636 L1160 200 L1186 200 L1198 636 Z"/>
+    <path d="M1390 648 L1402 180 L1434 180 L1448 648 Z"/>
+  </g>
+  <g fill="#3b3050" opacity="0.5">
+    <path d="M252 190 L282 190 L280 400 L256 400 Z"/>
+    <path d="M534 170 L568 170 L565 420 L539 420 Z"/>
+    <path d="M1160 200 L1186 200 L1184 430 L1163 430 Z"/>
+  </g>
+  <!-- Boughs on the mid trunks -->
+  <g fill="#1b1729" pointer-events="none">
+    <path d="M255 176 L322 306 L286 298 L344 418 L160 418 L226 298 L190 306 Z" opacity="0.92"/>
+    <path d="M551 156 L642 310 L594 302 L672 436 L430 436 L510 302 L462 310 Z" opacity="0.92"/>
+    <path d="M866 196 L948 336 L906 328 L976 448 L756 448 L828 328 L786 336 Z" opacity="0.9"/>
+    <path d="M1173 186 L1250 316 L1210 308 L1272 420 L1074 420 L1140 308 L1098 316 Z" opacity="0.55"/>
+    <path d="M1417 166 L1504 316 L1458 308 L1534 440 L1300 440 L1378 308 L1332 316 Z" opacity="0.92"/>
+  </g>
+  <!-- Branch stubs -->
+  <g stroke="#1b1729" stroke-width="10" stroke-linecap="round">
+    <path d="M296 340 L360 300"/>
+    <path d="M534 300 L470 260"/>
+    <path d="M1198 320 L1266 286"/>
+  </g>
+
+  <!-- ---- The lantern, kept by someone ------------------------------------ -->
+  <g id="lantern">
+    <line x1="372" y1="298" x2="372" y2="330" stroke="#6b5f7a" stroke-width="3"/>
+    <ellipse id="lantern-glow" cx="372" cy="366" rx="86" ry="72" fill="url(#wood-lampglow)" opacity="0"/>
+    <path d="M354 330 h36 l-5 -10 h-26 z" fill="#6b5f7a"/>
+    <rect x="352" y="330" width="40" height="58" rx="5" fill="#0d0b14"/>
+    <rect x="358" y="338" width="28" height="42" rx="3" fill="#3b3050"/>
+    <rect x="362" y="342" width="20" height="34" rx="2" fill="#f2c46b" opacity="0.35"/>
+    <circle cx="372" cy="359" r="5" fill="#f2c46b" opacity="0.8"/>
+    <path d="M354 388 h36 l-4 8 h-28 z" fill="#6b5f7a"/>
+  </g>
+
+  <!-- ---- The pale thing, between trunks ----------------------------------- -->
+  <g id="pale-shape" opacity="0.65">
+    <ellipse cx="1252" cy="500" rx="17" ry="46" fill="#d8d0c4"/>
+    <circle cx="1252" cy="446" r="12" fill="#d8d0c4"/>
+    <circle cx="1248" cy="444" r="2" fill="#05040a"/>
+    <circle cx="1257" cy="444" r="2" fill="#05040a"/>
+  </g>
+
+  <!-- ---- The burrow, for those who have met its tenant --------------------- -->
+  <g id="burrow">
+    <ellipse cx="1310" cy="700" rx="52" ry="20" fill="#0d0b14"/>
+    <ellipse cx="1310" cy="698" rx="38" ry="13" fill="#05040a"/>
+    <g stroke="#2a4d4d" stroke-width="2" opacity="0.8" stroke-linecap="round">
+      <path d="M1252 706 q-14 -4 -26 -2"/>
+      <path d="M1256 694 q-12 -8 -24 -8"/>
+      <path d="M1368 706 q14 -4 26 -2"/>
+      <path d="M1364 694 q12 -8 24 -8"/>
+    </g>
+  </g>
+
+  <!-- ---- The way back ------------------------------------------------------ -->
+  <g id="path-back">
+    <polygon points="168,560 332,560 348,740 152,740" fill="#0d0b14"/>
+    <polygon points="188,572 312,572 326,724 174,724" fill="url(#wood-dusk)"/>
+    <polygon points="238,586 262,586 260,716 240,716" fill="#1b1729" opacity="0.85"/>
+  </g>
+
+  <!-- ---- Foreground plane: the trees that frame you ------------------------- -->
+  <g pointer-events="none">
+    <path d="M-20 900 L-8 60 L96 60 L128 380 L108 900 Z" fill="#05040a"/>
+    <path d="M60 400 L150 330 L160 348 L84 416 Z" fill="#05040a"/>
+    <path d="M1600 900 L1588 40 L1476 40 L1450 420 L1478 900 Z" fill="#05040a"/>
+    <path d="M1470 360 L1372 300 L1362 320 L1446 382 Z" fill="#05040a"/>
+    <path d="M640 900 L652 480 L700 480 L714 900 Z" fill="#05040a" opacity="0.9"/>
+  </g>
+
+  <rect width="1600" height="900" fill="url(#wood-vignette)" pointer-events="none"/>
+</svg>

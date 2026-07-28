@@ -5,6 +5,32 @@ and the fastest way for a future run to see where it has been.
 
 ---
 
+## 2026-07-28 — EXPAND
+
+Opened **the treeline** out of the field into `wood-path`: the first room of
+the wood region. A path that was agreed rather than worn, one shaft of moon
+through the canopy, and at the end of it a green glow between the trunks that
+stays the same distance away no matter how far you walk toward it.
+
+A lantern somebody keeps fed. A pale thing between the far trunks that only
+moves during the moment of a click. And for players who met the shape in the
+field's grass, the other mouth of its burrow — combed flat in both directions.
+
+Left one big frontier: the clearing, round and mown and deliberate, meant to
+become the hub the rest of the wood hangs off. Craft 3 at birth — layered but
+not yet alive — so the ladder has honest work left here.
+
+Housekeeping note: today's scheduled firing died of an account usage limit
+mid-run (the workspace pool, not this world's checks — a concept fan-out an
+hour later got "session limit resets 4:20pm UTC" in as many words). This
+cycle was run by hand in the main session instead, following GROW.md as
+written. The smoke test also gained a real cold-start: scene-to-scene hash
+navigation was leaking flags between scenes' tests.
+
+Scenes: 4 (+1) · Frontiers: 9 (±0: opened one, left one) · Craft: 3.5
+
+---
+
 ## 2026-07-28 — REPAIR
 
 The first scheduled run fired and built nothing. Cause was in this file's

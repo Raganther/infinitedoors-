@@ -81,10 +81,12 @@ The default. One frontier becomes a real place.
    - have **at least one `goto` back** to somewhere already reachable;
    - leave **at least one new `frontier`**, with a hint written for whoever
      builds next. This is not optional. It is how the world keeps growing;
-   - be built to **craft 2** — composed, lit, vignetted — and say so in its
-     JSON. Do not try to reach rung 5 in one sitting. Later ENRICH runs will
-     take it the rest of the way, and they will do it better than a run that
-     is also inventing a place from scratch.
+   - be built to **craft 2 or 3**, and labelled with the rung it actually
+     earned — a scene whose composition needed foreground occlusion to work
+     is honestly a 3. Never label above what you drew: a false number makes
+     a later ENRICH run bank a rung without doing the work, and the ratchet
+     stops meaning anything. Do not reach for 4 or 5 in one sitting; later
+     ENRICH runs do that better than a run that is also inventing a place.
 
 ### DEEPEN — reward a second look
 
