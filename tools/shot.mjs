@@ -7,35 +7,23 @@
  *   node tools/shot.mjs ship-hold --raw # artwork only, no title or captions
  */
 
-import { execSync } from 'node:child_process';
-import { pathToFileURL } from 'node:url';
 import { mkdir } from 'node:fs/promises';
 import { serve } from './serve.mjs';
 import { buildManifest } from './build-manifest.mjs';
+import { launchChromium } from './browser.mjs';
 
 const OUT = 'shots';
-
-async function loadPlaywright() {
-  const unwrap = (m) => (m.chromium ? m : m.default);
-  try {
-    return unwrap(await import('playwright'));
-  } catch {
-    const root = execSync('npm root -g', { encoding: 'utf8' }).trim();
-    return unwrap(await import(pathToFileURL(`${root}/playwright/index.js`).href));
-  }
-}
 
 const args = process.argv.slice(2);
 const raw = args.includes('--raw');
 const only = args.filter((a) => !a.startsWith('--'));
 
-const { chromium } = await loadPlaywright();
 const manifest = await buildManifest();
 const ids = only.length ? only : manifest.scenes.map((s) => s.id);
 
 await mkdir(OUT, { recursive: true });
 const { server, port } = await serve(0);
-const browser = await chromium.launch();
+const browser = await launchChromium();
 const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
 
 for (const id of ids) {

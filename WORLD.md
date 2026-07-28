@@ -5,6 +5,31 @@ and the fastest way for a future run to see where it has been.
 
 ---
 
+## 2026-07-28 — REPAIR
+
+The first scheduled run fired and built nothing. Cause was in this file's
+sibling: `GROW.md` step 0 told the run to `npm install`, which drops a second
+playwright next to the working one already in the environment. That copy hunts
+for a browser build number that is not on disk, the smoke test dies with
+"Executable doesn't exist", and a red check sends the run into REPAIR — where
+it could not fix a browser mismatch and gave up. Silently.
+
+Three things changed:
+
+- `tools/browser.mjs` finds a chromium that actually launches, falling back to
+  whatever is installed rather than trusting the module's own expectation.
+- `GROW.md` no longer says to install anything, and says why.
+- The smoke test stopped clearing storage by reloading mid-load, which aborted
+  the engine's in-flight fetch and produced an occasional false failure. An
+  intermittent red costs a day exactly like a real one does.
+
+Verified by cloning the world fresh, reproducing the break, and then running
+the checks five times against the still-broken install.
+
+Scenes: 3 · Frontiers: 9 · Craft: 3.67
+
+---
+
 ## 2026-07-27 — MECHANIC
 
 Added the craft ladder, so the drawing improves as steadily as the world

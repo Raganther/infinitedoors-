@@ -7,37 +7,18 @@
  *   node tools/smoke.mjs
  */
 
-import { execSync } from 'node:child_process';
-import { pathToFileURL } from 'node:url';
 import { serve } from './serve.mjs';
 import { buildManifest } from './build-manifest.mjs';
+import { launchChromium } from './browser.mjs';
 
 const failures = [];
 const note = (msg) => failures.push(msg);
 
-/* Playwright may be a local devDependency or a global install. The CommonJS
- * build lands under .default when imported by path, so unwrap either shape. */
-async function loadPlaywright() {
-  const unwrap = (m) => (m.chromium ? m : m.default);
-  try {
-    return unwrap(await import('playwright'));
-  } catch {
-    try {
-      const root = execSync('npm root -g', { encoding: 'utf8' }).trim();
-      return unwrap(await import(pathToFileURL(`${root}/playwright/index.js`).href));
-    } catch {
-      console.error('playwright not found — run: npm i -D playwright && npx playwright install chromium');
-      process.exit(1);
-    }
-  }
-}
-
-const { chromium } = await loadPlaywright();
 const manifest = await buildManifest();
 const { server, port } = await serve(0);
 const base = `http://127.0.0.1:${port}`;
 
-const browser = await chromium.launch();
+const browser = await launchChromium();
 const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
 
 let scope = 'boot';
@@ -56,11 +37,19 @@ const idle = (ms = 10000) =>
   page.waitForFunction(() => window.__doors && !window.__doors.busy, null, { timeout: ms });
 
 /* Every scene is tested from a cold start, so flag-gated hotspots really are
- * locked and one scene's clicks cannot leak into the next. */
+ * locked and one scene's clicks cannot leak into the next.
+ *
+ * The wipe runs before the page's own scripts on every navigation. Clearing
+ * after load and reloading would also work, but it aborts whatever the engine
+ * already had in flight, and the resulting "Failed to fetch" reads as a broken
+ * world. An intermittent red is as costly here as a real one — it sends the
+ * growth job into REPAIR and eats the day. */
+await page.addInitScript(() => {
+  try { localStorage.clear(); } catch { /* opaque origin; nothing to clear */ }
+});
+
 async function open(id) {
   await page.goto(`${base}/#/${id}`, { waitUntil: 'load' });
-  await page.evaluate(() => localStorage.clear());
-  await page.reload({ waitUntil: 'load' });
   await idle();
 }
 
@@ -171,8 +160,6 @@ for (const scene of manifest.scenes) {
 
 scope = 'entry';
 await page.goto(base, { waitUntil: 'load' });
-await page.evaluate(() => localStorage.clear());
-await page.reload({ waitUntil: 'load' });
 await idle();
 if ((await page.evaluate(() => window.__doors.current)) !== manifest.entry) {
   note(`cold start did not land on "${manifest.entry}"`);

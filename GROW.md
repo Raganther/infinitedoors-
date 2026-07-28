@@ -14,10 +14,15 @@ happens to land on. Run these first, before changing anything:
 
 ```bash
 git fetch origin main && git checkout -B main origin/main
-npm install                              # playwright, for the smoke test
 npm run manifest && npm run validate     # fast, no browser
 node tools/smoke.mjs                     # plays the world in a real browser
 ```
+
+**Do not run `npm install` unless something actually reports a missing
+module.** This world has no runtime dependencies. Your environment already has
+a working browser, and installing a second playwright next to it gives you one
+that hunts for a browser build number that is not on disk. That turns the
+checks red, sends you into REPAIR, and costs the day. It has happened.
 
 Then read, in this order:
 
