@@ -243,10 +243,19 @@ Then commit and push:
 git add -A
 git commit -m "EXPAND: the folding room, behind the door with too many hinges"
 git push -u origin main
+git push origin main:claude/click-play-game-automation-umy3dp
 ```
 
-Push to `main`. CI runs the same checks; if it goes red, the next run's REPAIR
-rule will catch it, but you should not be the reason.
+Push to `main`, then mirror to the branch on the second line. The mirror
+exists because GitHub Pages only accepts deployments from the repository's
+default branch, which is currently that one — without the mirror push the
+world grows but the public site goes stale. It is always a fast-forward; if
+it ever refuses, something has diverged and that is a REPAIR. If the repo's
+default branch is ever switched to `main`, delete the mirror line here and
+in the workflow.
+
+CI runs the same checks; if it goes red, the next run's REPAIR rule will
+catch it, but you should not be the reason.
 
 ---
 

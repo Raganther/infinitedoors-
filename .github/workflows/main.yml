@@ -1,8 +1,14 @@
 name: check and publish
 
+# Deploys are accepted only from the repository's default branch (GitHub's
+# auto-created github-pages environment enforces it), and the default here is
+# still the original seed branch. main stays the branch of record; every push
+# to it is mirrored onto the default branch purely so Pages will accept the
+# deployment. If the default branch is ever switched to main, the mirror
+# becomes redundant and this list can shrink back to [main].
 on:
   push:
-    branches: [main]
+    branches: [main, claude/click-play-game-automation-umy3dp]
   pull_request:
   workflow_dispatch:
 
@@ -61,7 +67,7 @@ jobs:
   deploy:
     name: publish
     needs: check
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/claude/click-play-game-automation-umy3dp')
     runs-on: ubuntu-latest
     # Publishing needs Pages switched on once by a human, under
     # Settings → Pages → Source → GitHub Actions. The workflow token is not
