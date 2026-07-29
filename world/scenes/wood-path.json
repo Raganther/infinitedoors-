@@ -4,6 +4,10 @@
   "art": "world/scenes/wood-path.svg",
   "region": "wood",
   "craft": 3,
+  "ambience": [
+    "wood-hush",
+    "night-shimmer"
+  ],
   "caption": "There is a path. It was agreed some time ago, and not by you.",
   "hotspots": [
     {
@@ -26,7 +30,8 @@
       "clip": "wood-step",
       "clipMs": 2600,
       "text": "When the moment passes it is where it started. You are nearly sure.",
-      "sets": "saw-the-pale-thing"
+      "sets": "saw-the-pale-thing",
+      "sound": "far-thump"
     },
     {
       "shape": "#lantern",
@@ -34,7 +39,8 @@
       "action": "animate",
       "clip": "wood-flare",
       "clipMs": 2800,
-      "text": "Lit, briefly. Whoever keeps it does not keep it for you."
+      "text": "Lit, briefly. Whoever keeps it does not keep it for you.",
+      "sound": "creak"
     },
     {
       "shape": "#burrow",

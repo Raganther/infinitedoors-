@@ -1,0 +1,143 @@
+{
+  "_comment": "The locked sound palette. Scenes name these patches; nothing else may make noise. Same discipline as palette.json: growth runs choose from what is here, only a CURATE or MECHANIC run may add or change patches. All sound is synthesized — no audio files in this world, ever. kinds: drone (sustained tone), noise (sustained filtered noise), blip (one-shot tone), swell (one-shot noise breath). Validator caps gains so an unattended run cannot ship a loud mistake.",
+  "patches": {
+    "hall-air": {
+      "kind": "drone",
+      "wave": "sine",
+      "freq": 49,
+      "detune": 4,
+      "filter": 260,
+      "gain": 0.045,
+      "lfo": {
+        "rate": 0.08,
+        "depth": 5
+      }
+    },
+    "ship-hum": {
+      "kind": "drone",
+      "wave": "sawtooth",
+      "freq": 58,
+      "detune": 2,
+      "filter": 190,
+      "gain": 0.04,
+      "lfo": {
+        "rate": 0.14,
+        "depth": 3
+      }
+    },
+    "green-breathe": {
+      "kind": "drone",
+      "wave": "sine",
+      "freq": 98,
+      "detune": 7,
+      "filter": 420,
+      "gain": 0.035,
+      "lfo": {
+        "rate": 0.05,
+        "depth": 12
+      }
+    },
+    "moon-glass": {
+      "kind": "drone",
+      "wave": "sine",
+      "freq": 655,
+      "detune": 9,
+      "filter": 1600,
+      "gain": 0.012,
+      "lfo": {
+        "rate": 0.03,
+        "depth": 20
+      }
+    },
+    "wind-thin": {
+      "kind": "noise",
+      "filter": 700,
+      "q": 1.6,
+      "gain": 0.03,
+      "lfo": {
+        "rate": 0.06,
+        "depth": 260
+      }
+    },
+    "wood-hush": {
+      "kind": "noise",
+      "filter": 380,
+      "q": 1.2,
+      "gain": 0.028,
+      "lfo": {
+        "rate": 0.045,
+        "depth": 120
+      }
+    },
+    "night-shimmer": {
+      "kind": "noise",
+      "filter": 2600,
+      "q": 6,
+      "gain": 0.012,
+      "lfo": {
+        "rate": 0.11,
+        "depth": 700
+      }
+    },
+    "door-pass": {
+      "kind": "swell",
+      "filter": 500,
+      "rise": 0.18,
+      "gain": 0.16,
+      "thump": 52,
+      "decay": 0.9
+    },
+    "door-shut": {
+      "kind": "blip",
+      "wave": "sine",
+      "freq": 74,
+      "fall": 40,
+      "attack": 0.004,
+      "decay": 0.5,
+      "gain": 0.22
+    },
+    "creak": {
+      "kind": "blip",
+      "wave": "sawtooth",
+      "freq": 320,
+      "fall": 140,
+      "attack": 0.03,
+      "decay": 0.7,
+      "gain": 0.07
+    },
+    "drip-up": {
+      "kind": "blip",
+      "wave": "sine",
+      "freq": 520,
+      "fall": 1480,
+      "attack": 0.002,
+      "decay": 0.5,
+      "gain": 0.11
+    },
+    "glass-tink": {
+      "kind": "blip",
+      "wave": "triangle",
+      "freq": 1480,
+      "fall": 1120,
+      "attack": 0.002,
+      "decay": 0.28,
+      "gain": 0.09
+    },
+    "far-thump": {
+      "kind": "blip",
+      "wave": "sine",
+      "freq": 60,
+      "fall": 42,
+      "attack": 0.01,
+      "decay": 0.9,
+      "gain": 0.13
+    },
+    "hush-swell": {
+      "kind": "swell",
+      "filter": 900,
+      "rise": 0.25,
+      "gain": 0.08,
+      "decay": 1.1
+    }
+  }
+}

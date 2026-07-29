@@ -5,6 +5,33 @@ and the fastest way for a future run to see where it has been.
 
 ---
 
+## 2026-07-29 — MECHANIC
+
+The world can be heard now. Everything audible is synthesized at play time
+from **`world/soundscape.json`** — fourteen named patches under the same lock
+the colour palette lives under: scenes choose from what exists, only CURATE
+or MECHANIC may add patches, and there will never be an audio file in this
+repository.
+
+Every scene names its air (`ambience`: one or two quiet beds — the hall holds
+one low breath, the field is thin wind and shimmer, the glasshouse breathes
+at 98Hz with something glassy far above). A click may name its reply
+(`sound`); doors speak by default — a soft rush through, a low refusal shut.
+The tap's drip finally goes up audibly. A mute button joined the controls and
+is persistent and sacred.
+
+The validator now checks sound like it checks colour: references must exist,
+beds must be beds, one-shots one-shots, and every gain is capped — quiet is
+the register of this world, enforced, because nobody wears headphones at 3am
+to catch a run that ships a scream. The browser play-through verifies audio
+boots and every named patch resolves in all five scenes.
+
+Requested by the owner; run as an out-of-band MECHANIC in the main session.
+
+Scenes: 5 · Frontiers: 9 · Craft: 3.4 · Patches: 14
+
+---
+
 ## 2026-07-29 — EXPAND
 
 Opened **the door standing ajar** into `glasshouse`: warm, wet, and glazed

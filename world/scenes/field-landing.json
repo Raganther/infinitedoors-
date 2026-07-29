@@ -4,6 +4,10 @@
   "art": "world/scenes/field-landing.svg",
   "region": "field",
   "craft": 4,
+  "ambience": [
+    "wind-thin",
+    "night-shimmer"
+  ],
   "caption": "The door closes behind you and stays where it is, in the middle of a field.",
   "hotspots": [
     {
@@ -24,7 +28,8 @@
       "action": "animate",
       "clip": "hatch-open",
       "clipMs": 2600,
-      "text": "The hatch irises shut, then open, then shut. It is not for you."
+      "text": "The hatch irises shut, then open, then shut. It is not for you.",
+      "sound": "glass-tink"
     },
     {
       "shape": "#dome",
@@ -32,7 +37,8 @@
       "action": "animate",
       "clip": "dome-stir",
       "clipMs": 3000,
-      "text": "Something inside the dome moves to the other side of the glass to keep looking at you."
+      "text": "Something inside the dome moves to the other side of the glass to keep looking at you.",
+      "sound": "hush-swell"
     },
     {
       "shape": "#moon",
@@ -47,7 +53,8 @@
       "clip": "grass-rustle",
       "clipMs": 1900,
       "text": "The grass moves against the wind. Whatever was there is nearer now.",
-      "sets": "saw-the-burrow"
+      "sets": "saw-the-burrow",
+      "sound": "hush-swell"
     },
     {
       "shape": "#trees-near",

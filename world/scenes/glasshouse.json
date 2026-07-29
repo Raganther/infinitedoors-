@@ -4,6 +4,10 @@
   "art": "world/scenes/glasshouse.svg",
   "region": "glasshouse",
   "craft": 3,
+  "ambience": [
+    "green-breathe",
+    "moon-glass"
+  ],
   "caption": "Warm in here, and wet. Everything is growing toward the door you came in by.",
   "hotspots": [
     {
@@ -19,7 +23,8 @@
       "clip": "glass-breathe",
       "clipMs": 3000,
       "text": "The beds rise and fall together. After a moment you notice you have joined in.",
-      "sets": "breathed-with-the-garden"
+      "sets": "breathed-with-the-garden",
+      "sound": "hush-swell"
     },
     {
       "shape": "#bell-jar",
@@ -27,7 +32,8 @@
       "action": "animate",
       "clip": "glass-fog",
       "clipMs": 3000,
-      "text": "It fogs from the inside, twice. Something in there is keeping warm."
+      "text": "It fogs from the inside, twice. Something in there is keeping warm.",
+      "sound": "glass-tink"
     },
     {
       "shape": "#tap",
@@ -35,7 +41,8 @@
       "action": "animate",
       "clip": "glass-drip",
       "clipMs": 2600,
-      "text": "The tap drips. Upward. You watch three drops go and decide it is none of your business."
+      "text": "The tap drips. Upward. You watch three drops go and decide it is none of your business.",
+      "sound": "drip-up"
     },
     {
       "shape": "#roof-vent",

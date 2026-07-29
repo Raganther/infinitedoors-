@@ -32,6 +32,38 @@ const allowedColors = new Set(
     .map((c) => c.toLowerCase())
 );
 
+/* ---- Soundscape --------------------------------------------------------
+ * The audio equivalent of the palette: a small set of named synth patches
+ * that scenes reference. Levels are capped here because nobody is wearing
+ * headphones at 3am to catch a run that ships a scream. */
+
+const SOUND_KINDS = ['drone', 'noise', 'blip', 'swell'];
+const BED_GAIN_MAX = 0.08;
+const SHOT_GAIN_MAX = 0.3;
+
+const soundscape = JSON.parse(await readFile('world/soundscape.json', 'utf8'));
+const soundNames = new Set(Object.keys(soundscape.patches || {}));
+
+for (const [name, p] of Object.entries(soundscape.patches || {})) {
+  const at = `world/soundscape.json patch "${name}"`;
+  if (!ID_RE.test(name)) fail(at, 'patch names are kebab-case');
+  if (!SOUND_KINDS.includes(p.kind)) fail(at, `kind must be one of ${SOUND_KINDS.join(', ')}`);
+  if (typeof p.gain !== 'number' || p.gain <= 0) fail(at, 'needs a positive "gain"');
+  const cap = (p.kind === 'drone' || p.kind === 'noise') ? BED_GAIN_MAX : SHOT_GAIN_MAX;
+  if (p.gain > cap) fail(at, `gain ${p.gain} exceeds the ${cap} cap for ${p.kind} — quiet is the register of this world`);
+  if ((p.kind === 'drone' || p.kind === 'blip')) {
+    if (typeof p.freq !== 'number' || p.freq < 25 || p.freq > 4200) fail(at, `freq must be 25-4200 Hz, got ${p.freq}`);
+  }
+  if (p.kind === 'blip' && p.fall !== undefined && (p.fall < 25 || p.fall > 4200)) {
+    fail(at, `fall is a target frequency, 25-4200 Hz, got ${p.fall}`);
+  }
+}
+
+// Engine defaults must exist or every door goes silent.
+for (const required of ['door-pass', 'door-shut']) {
+  if (!soundNames.has(required)) fail('world/soundscape.json', `missing "${required}" — the engine plays it by default`);
+}
+
 const scenes = await readScenes();
 const byId = new Map();
 
@@ -58,6 +90,17 @@ for (const { file, data } of scenes) {
 
   if (!Number.isInteger(data.craft) || data.craft < 2 || data.craft > 5) {
     fail(where, `"craft" must be an integer 2-5 (see the ladder in STYLE.md), got ${JSON.stringify(data.craft)}`);
+  }
+
+  if (!Array.isArray(data.ambience) || data.ambience.length < 1 || data.ambience.length > 2) {
+    fail(where, 'needs "ambience": 1-2 patch names from world/soundscape.json — every scene has air');
+  } else {
+    for (const name of data.ambience) {
+      if (!soundNames.has(name)) fail(where, `ambience "${name}" is not in world/soundscape.json`);
+      else if (!['drone', 'noise'].includes(soundscape.patches[name].kind)) {
+        fail(where, `ambience "${name}" is a one-shot (${soundscape.patches[name].kind}) — beds must be drone or noise`);
+      }
+    }
   }
 
   const spots = data.hotspots;
@@ -141,6 +184,13 @@ for (const { file, data } of scenes) {
     if (!spot.label) fail(at, 'missing "label" (screen reader name)');
     if (!ACTIONS.includes(spot.action)) {
       fail(at, `action must be one of ${ACTIONS.join(', ')}, got ${JSON.stringify(spot.action)}`);
+    }
+
+    if (spot.sound !== undefined) {
+      if (!soundNames.has(spot.sound)) fail(at, `sound "${spot.sound}" is not in world/soundscape.json`);
+      else if (!['blip', 'swell'].includes(soundscape.patches[spot.sound].kind)) {
+        fail(at, `sound "${spot.sound}" is a bed (${soundscape.patches[spot.sound].kind}) — clicks play blip or swell`);
+      }
     }
 
     switch (spot.action) {

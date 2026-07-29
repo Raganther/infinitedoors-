@@ -208,14 +208,19 @@ you cannot fix it, revert the commit that caused it and say so in `WORLD.md`.
    thing an `id`. Put animation keyframes in a `<style>` block, prefixed with
    the scene id so they cannot collide.
 3. **Write the JSON** — `world/scenes/<id>.json`, matching `world/schema.json`.
-4. **Link it in** by converting the parent frontier to a `goto`.
-5. **Check your work:**
+4. **Give it air** — `"ambience"`: one or two bed patches from
+   `world/soundscape.json`, chosen to say what kind of place this is. Add a
+   `"sound"` to at most two or three hotspots whose click deserves its own
+   voice. Pick from the patches that exist — inventing patches is CURATE or
+   MECHANIC work, per STYLE.md.
+5. **Link it in** by converting the parent frontier to a `goto`.
+6. **Check your work:**
    ```bash
    npm run check
    ```
    This regenerates the manifest, validates the data, and plays the whole
    world in a browser. All three must pass.
-6. **Look at it.** Take a screenshot and actually look:
+7. **Look at it.** Take a screenshot and actually look:
    ```bash
    node tools/shot.mjs <scene-id>
    ```

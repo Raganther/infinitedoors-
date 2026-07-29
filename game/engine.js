@@ -21,6 +21,7 @@ const el = {
   toast: document.getElementById('toast'),
   back: document.getElementById('btn-back'),
   hint: document.getElementById('btn-hint'),
+  mute: document.getElementById('btn-mute'),
 };
 
 const cache = new Map();
@@ -34,7 +35,7 @@ let toastTimer = null;
 const save = load();
 
 function load() {
-  const blank = { flags: {}, visited: [], fired: [], trail: [] };
+  const blank = { flags: {}, visited: [], fired: [], trail: [], muted: false };
   try {
     const raw = localStorage.getItem(SAVE_KEY);
     return raw ? { ...blank, ...JSON.parse(raw) } : blank;
@@ -97,6 +98,7 @@ async function goto(id, { record = true } = {}) {
       if (save.trail.length > 64) save.trail.shift();
     }
     current = scene;
+    audio.ambience(scene.ambience);
 
     if (!save.visited.includes(id)) save.visited.push(id);
     persist();
@@ -229,6 +231,13 @@ function act(scene, spot, node, key) {
     node.classList.add('spent');
   }
 
+  // Every scene names its air; a click may name its own reply. Doors get a
+  // default voice either way.
+  const sound = spot.sound
+    || (spot.action === 'goto' ? 'door-pass' : null)
+    || (spot.action === 'frontier' ? 'door-shut' : null);
+  if (sound) audio.play(sound);
+
   switch (spot.action) {
     case 'goto':
       goto(spot.target);
@@ -286,6 +295,187 @@ function hideToast() {
   el.toast.classList.remove('shown');
 }
 
+/* ---- Sound -------------------------------------------------------------
+ *
+ * Everything audible is synthesized from world/soundscape.json — a locked
+ * palette of named patches, the exact discipline palette.json applies to
+ * colour. Scenes name an ambience; hotspots may name a one-shot. Browsers
+ * refuse audio before a user gesture, so the context is created on the
+ * first pointer or key press — which in this game is also the first click
+ * of play.
+ */
+
+const audio = (() => {
+  let ctx = null;
+  let master = null;
+  let patches = {};
+  let beds = [];            // currently sounding ambience
+  let pending = [];         // ambience requested before the first gesture
+  let error = null;
+  const missing = new Set();
+
+  function setPatches(p) { patches = p || {}; }
+
+  function unlock() {
+    if (ctx) return;
+    try {
+      ctx = new (window.AudioContext || window.webkitAudioContext)();
+      master = ctx.createGain();
+      master.gain.value = save.muted ? 0 : 0.9;
+      master.connect(ctx.destination);
+      ambience(pending);
+    } catch (err) {
+      error = String(err && err.message || err);
+    }
+  }
+
+  const now = () => ctx.currentTime;
+
+  function noiseSource() {
+    const len = ctx.sampleRate * 2;
+    const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+    const d = buf.getChannelData(0);
+    for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+    const src = ctx.createBufferSource();
+    src.buffer = buf;
+    src.loop = true;
+    return src;
+  }
+
+  function lfoInto(param, lfo, base) {
+    if (!lfo) return null;
+    const osc = ctx.createOscillator();
+    const depth = ctx.createGain();
+    osc.frequency.value = lfo.rate;
+    depth.gain.value = lfo.depth;
+    osc.connect(depth).connect(param);
+    param.value = base;
+    osc.start();
+    return osc;
+  }
+
+  function startBed(name) {
+    const p = patches[name];
+    if (!p) { missing.add(name); return null; }
+
+    const out = ctx.createGain();
+    out.gain.setValueAtTime(0, now());
+    out.gain.linearRampToValueAtTime(p.gain, now() + 1.4);
+    out.connect(master);
+    const stops = [];
+
+    if (p.kind === 'drone') {
+      for (const off of [0, p.detune || 0]) {
+        const osc = ctx.createOscillator();
+        osc.type = p.wave || 'sine';
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.value = p.filter || 800;
+        const l = lfoInto(osc.frequency, off === 0 ? p.lfo : null, p.freq + off);
+        osc.frequency.value = p.freq + off;
+        osc.connect(filter).connect(out);
+        osc.start();
+        stops.push(osc, l);
+      }
+    } else if (p.kind === 'noise') {
+      const src = noiseSource();
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.Q.value = p.q || 1;
+      const l = lfoInto(filter.frequency, p.lfo, p.filter);
+      filter.frequency.value = p.filter;
+      src.connect(filter).connect(out);
+      src.start();
+      stops.push(src, l);
+    } else {
+      return null; // one-shots are not beds
+    }
+
+    return { name, out, stops: stops.filter(Boolean) };
+  }
+
+  function ambience(names) {
+    const want = (names || []).slice(0, 2);
+    if (!ctx) { pending = want; return; }
+
+    for (const bed of beds) {
+      bed.out.gain.linearRampToValueAtTime(0, now() + 0.9);
+      const dead = bed;
+      setTimeout(() => dead.stops.forEach((n) => { try { n.stop(); } catch {} }), 1100);
+    }
+    beds = want.map(startBed).filter(Boolean);
+  }
+
+  function play(name) {
+    if (!ctx || save.muted) return;
+    const p = patches[name];
+    if (!p) { missing.add(name); return; }
+    const t = now();
+
+    if (p.kind === 'blip') {
+      const osc = ctx.createOscillator();
+      osc.type = p.wave || 'sine';
+      osc.frequency.setValueAtTime(p.freq, t);
+      if (p.fall) osc.frequency.exponentialRampToValueAtTime(p.fall, t + p.decay);
+      const env = ctx.createGain();
+      env.gain.setValueAtTime(0, t);
+      env.gain.linearRampToValueAtTime(p.gain, t + (p.attack || 0.005));
+      env.gain.exponentialRampToValueAtTime(0.0005, t + p.decay);
+      osc.connect(env).connect(master);
+      osc.start(t);
+      osc.stop(t + p.decay + 0.1);
+    } else if (p.kind === 'swell') {
+      const src = noiseSource();
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.value = p.filter || 600;
+      const env = ctx.createGain();
+      env.gain.setValueAtTime(0, t);
+      env.gain.linearRampToValueAtTime(p.gain, t + (p.rise || 0.2));
+      env.gain.exponentialRampToValueAtTime(0.0005, t + (p.rise || 0.2) + (p.decay || 0.8));
+      src.connect(filter).connect(env).connect(master);
+      src.start(t);
+      src.stop(t + (p.rise || 0.2) + (p.decay || 0.8) + 0.1);
+      if (p.thump) {
+        const osc = ctx.createOscillator();
+        osc.frequency.value = p.thump;
+        const tenv = ctx.createGain();
+        tenv.gain.setValueAtTime(0, t);
+        tenv.gain.linearRampToValueAtTime(p.gain * 0.9, t + 0.02);
+        tenv.gain.exponentialRampToValueAtTime(0.0005, t + 0.7);
+        osc.connect(tenv).connect(master);
+        osc.start(t);
+        osc.stop(t + 0.8);
+      }
+    }
+  }
+
+  function setMuted(m) {
+    save.muted = m;
+    persist();
+    if (ctx) master.gain.linearRampToValueAtTime(m ? 0 : 0.9, now() + 0.2);
+  }
+
+  return {
+    setPatches, unlock, ambience, play, setMuted,
+    get diag() {
+      return {
+        ready: Boolean(ctx),
+        state: ctx ? ctx.state : 'none',
+        patches: Object.keys(patches).length,
+        missing: [...missing],
+        error,
+      };
+    },
+  };
+})();
+
+function paintMute() {
+  el.mute.textContent = save.muted ? '♪̸' : '♪';
+  el.mute.setAttribute('aria-pressed', String(save.muted));
+  el.mute.title = save.muted ? 'Unmute (M)' : 'Mute (M)';
+}
+
 /* ---- Hints ------------------------------------------------------------ */
 
 function reveal() {
@@ -311,11 +501,18 @@ function back() {
 
 el.back.addEventListener('click', back);
 el.hint.addEventListener('click', reveal);
+el.mute.addEventListener('click', () => { audio.setMuted(!save.muted); paintMute(); });
 
 document.addEventListener('keydown', (ev) => {
   if (ev.key === 'Backspace') { ev.preventDefault(); back(); }
   if (ev.key === 'h' || ev.key === 'H') reveal();
+  if (ev.key === 'm' || ev.key === 'M') { audio.setMuted(!save.muted); paintMute(); }
 });
+
+// Browsers keep audio locked until a real gesture; the first click of play
+// is that gesture.
+['pointerdown', 'keydown'].forEach((evt) =>
+  document.addEventListener(evt, () => audio.unlock(), { once: false, passive: true }));
 
 window.addEventListener('hashchange', () => {
   const id = location.hash.slice(2);
@@ -328,12 +525,20 @@ window.addEventListener('hashchange', () => {
 /* ---- Boot ------------------------------------------------------------- */
 
 el.back.hidden = save.trail.length === 0;
+paintMute();
+
+fetch('world/soundscape.json', { cache: 'no-cache' })
+  .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`soundscape ${r.status}`))))
+  .then((data) => audio.setPatches(data.patches))
+  .catch((err) => console.warn('[infinite-doors] soundscape failed to load:', err.message));
+
 goto(location.hash.slice(2) || ENTRY, { record: false });
 
 // Exposed for tools/smoke.mjs.
 window.__doors = {
   get current() { return current && current.id; },
   get busy() { return navigating; },
+  get audio() { return audio.diag; },
   goto,
   save,
 };

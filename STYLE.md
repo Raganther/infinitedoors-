@@ -142,6 +142,30 @@ accumulate instead of oscillating.
 
 ---
 
+## Sound
+
+Everything audible is synthesized from **`world/soundscape.json`** — a locked
+palette of named patches, under exactly the discipline the colour palette is
+under. Scenes pick from what exists; only a CURATE or MECHANIC run may add or
+change patches; no audio files, ever. The validator enforces the references
+and caps every gain, because nobody is wearing headphones at 3am to catch a
+run that ships a scream.
+
+- **Every scene names its air**: `"ambience": [...]` — one or two beds
+  (drones and noises). The register of this world is *quiet*. A player who
+  turns the sound off should lose atmosphere, never information.
+- **A click may name its own reply** with `"sound"` on the hotspot — a blip
+  or swell. Doors already speak: `goto` plays `door-pass`, `frontier` plays
+  `door-shut`, by engine default. Give a hotspot its own sound only when the
+  click deserves a particular voice — a drip, a creak, a breath.
+- **Warm and cold apply to sound too.** Human-adjacent things sit low and
+  soft (sines, slow swells). The other lives higher and stranger — detuned,
+  glassy, thin. `moon-glass` against `hall-air` is the audio version of
+  verdigris against lamp.
+- **Reuse before you invent.** Two scenes sharing `night-shimmer` is the
+  world cohering, not a shortage of imagination.
+- The mute button is sacred. Never autoplay around it, never fight it.
+
 ## Words
 
 Second person, present tense. Understated. The horror and the comedy are both

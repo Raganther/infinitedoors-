@@ -16,6 +16,7 @@ index.html            the shell
 game/engine.js        loads scenes, binds hotspots, runs transitions
 game/style.css        frame, hotspot affordances, prose
 world/palette.json    the locked palette — validator enforces it
+world/soundscape.json the locked sound palette — synthesized, no audio files
 world/schema.json     the scene grammar
 world/manifest.json   generated; the world's state and frontier queue
 world/scenes/*.json   one per scene: hotspots and what they do

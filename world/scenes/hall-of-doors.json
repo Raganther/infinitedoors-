@@ -4,6 +4,9 @@
   "art": "world/scenes/hall-of-doors.svg",
   "region": "hall",
   "craft": 4,
+  "ambience": [
+    "hall-air"
+  ],
   "caption": "You have been walking a while. You do not remember starting.",
   "hotspots": [
     {
@@ -59,7 +62,8 @@
       "action": "animate",
       "clip": "lamp-sway",
       "clipMs": 2800,
-      "text": "The lamp swings. Nothing here is moving air."
+      "text": "The lamp swings. Nothing here is moving air.",
+      "sound": "creak"
     },
     {
       "shape": "#runner",
@@ -67,7 +71,8 @@
       "action": "animate",
       "clip": "runner-lift",
       "clipMs": 2200,
-      "text": "Something passes underneath the carpet, from one end of the hall to the other."
+      "text": "Something passes underneath the carpet, from one end of the hall to the other.",
+      "sound": "far-thump"
     }
   ]
 }

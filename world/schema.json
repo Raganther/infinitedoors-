@@ -39,6 +39,13 @@
       "required": true,
       "minItems": 2,
       "note": "Every scene must reward at least two clicks."
+    },
+    "ambience": {
+      "type": "array",
+      "required": true,
+      "minItems": 1,
+      "maxItems": 2,
+      "note": "1-2 patch names from world/soundscape.json — the scene's air. Every scene must have a sound, even if it is nearly silence."
     }
   },
   "hotspot": {
@@ -102,6 +109,11 @@
       "type": "boolean",
       "required": false,
       "note": "Fires a single time, then the hotspot is spent."
+    },
+    "sound": {
+      "type": "string",
+      "required": false,
+      "note": "One-shot patch name from world/soundscape.json, played on click. goto and frontier have engine defaults (door-pass, door-shut); set this only when a click deserves its own voice."
     }
   }
 }

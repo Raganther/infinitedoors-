@@ -125,6 +125,16 @@ for (const scene of manifest.scenes) {
       if (!spoke) note(`${scene.id}: ${spot.shape} was clicked but said nothing`);
     }
   }
+
+  // The clicks above were real gestures, so the audio context should have
+  // unlocked, and every patch the scene named should have resolved. A
+  // missing patch is silent for a player — this is the only place it shows.
+  const sound = await page.evaluate(() => window.__doors.audio);
+  if (sound.error) note(`${scene.id}: audio failed to start — ${sound.error}`);
+  if (sound.patches === 0) note(`${scene.id}: soundscape.json never loaded`);
+  for (const name of sound.missing) {
+    note(`${scene.id}: names sound "${name}" which did not resolve`);
+  }
 }
 
 /* ---- Every exit goes where it claims ---------------------------------- */

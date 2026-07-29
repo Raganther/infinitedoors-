@@ -4,6 +4,10 @@
   "art": "world/scenes/ship-hold.svg",
   "region": "ship",
   "craft": 3,
+  "ambience": [
+    "ship-hum",
+    "moon-glass"
+  ],
   "caption": "The light sets you down inside and goes out, politely, behind you.",
   "hotspots": [
     {
@@ -19,7 +23,8 @@
       "clip": "jar-wake",
       "clipMs": 3400,
       "text": "It was asleep. It is not asleep. It has been in there a very long time and it is glad to see you.",
-      "sets": "saw-the-sleeper"
+      "sets": "saw-the-sleeper",
+      "sound": "hush-swell"
     },
     {
       "shape": "#console",
@@ -28,7 +33,8 @@
       "clip": "console-run",
       "clipMs": 2600,
       "text": "The keys light in sequence, wait for an answer you cannot give, and give up. Above you, something unlatches.",
-      "sets": "console-run"
+      "sets": "console-run",
+      "sound": "glass-tink"
     },
     {
       "shape": "#viewport",
