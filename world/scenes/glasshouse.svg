@@ -1,0 +1,228 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <title>Inside a night glasshouse, beds converging toward a far wall of fogged panes, a canopy pressing down on the roof from outside</title>
+
+  <defs>
+    <linearGradient id="glass-night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#05040a"/>
+      <stop offset="0.55" stop-color="#0d0b14"/>
+      <stop offset="1" stop-color="#1b1729"/>
+    </linearGradient>
+    <linearGradient id="glass-floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b1729"/>
+      <stop offset="0.5" stop-color="#0d0b14"/>
+      <stop offset="1" stop-color="#05040a"/>
+    </linearGradient>
+    <radialGradient id="glass-moonwash">
+      <stop offset="0" stop-color="#f0e9dd" stop-opacity="0.16"/>
+      <stop offset="0.6" stop-color="#f0e9dd" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#f0e9dd" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="glass-hallspill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f2c46b" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#d97757" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glass-ventglow">
+      <stop offset="0" stop-color="#6fb3a0" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#6fb3a0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glass-vignette">
+      <stop offset="0.52" stop-color="#05040a" stop-opacity="0"/>
+      <stop offset="1" stop-color="#05040a" stop-opacity="0.92"/>
+    </radialGradient>
+  </defs>
+
+  <style>
+    #beds.glass-breathe #beds-crowns { animation: glass-breathe 3s ease-in-out; }
+    @keyframes glass-breathe {
+      0%, 100% { transform: translateY(0); }
+      30%      { transform: translateY(-9px); }
+      60%      { transform: translateY(3px); }
+    }
+
+    #bell-jar.glass-fog #jar-fog { animation: glass-fog 3s ease-in-out; }
+    @keyframes glass-fog {
+      0%, 100% { opacity: 0; }
+      18%      { opacity: 0.7; }
+      38%      { opacity: 0.1; }
+      55%      { opacity: 0.75; }
+      80%      { opacity: 0.15; }
+    }
+
+    #tap.glass-drip #tap-drop { animation: glass-drip 2.6s ease-in; }
+    @keyframes glass-drip {
+      0%       { transform: translateY(0); opacity: 0; }
+      12%      { opacity: 0.9; }
+      100%     { transform: translateY(-240px); opacity: 0; }
+    }
+  </style>
+
+  <!-- ---- Night through the glass ---------------------------------------- -->
+  <rect width="1600" height="620" fill="url(#glass-night)"/>
+  <circle cx="430" cy="180" r="120" fill="url(#glass-moonwash)" pointer-events="none"/>
+  <circle cx="430" cy="180" r="44" fill="#f0e9dd" opacity="0.35" pointer-events="none"/>
+
+  <!-- ---- The canopy outside, pressing down on the roof --------------------- -->
+  <g pointer-events="none">
+    <path d="M0 0 H1600 V120 Q1540 176 1470 138 Q1410 190 1330 148 Q1270 196 1190 152
+             Q1130 198 1050 154 Q990 200 910 156 Q850 202 770 158 Q710 204 630 158
+             Q570 202 490 156 Q430 198 350 152 Q290 194 210 148 Q150 188 70 144 Q30 164 0 150 Z"
+          fill="#05040a"/>
+    <path d="M0 150 Q80 210 170 172 Q260 232 360 186 Q450 240 550 192 Q640 244 740 194
+             Q830 246 930 196 Q1020 246 1120 196 Q1210 244 1310 192 Q1400 238 1500 186
+             Q1560 216 1600 190 V60 H0 Z" fill="#2a4d4d" opacity="0.4"/>
+    <g stroke="#2a4d4d" stroke-width="5" stroke-linecap="round" opacity="0.75">
+      <path d="M690 172 q10 60 -6 108"/>
+      <path d="M736 180 q-8 52 8 92"/>
+      <path d="M1042 176 q8 56 -8 100"/>
+    </g>
+  </g>
+
+  <!-- ---- Far wall of fogged panes ------------------------------------------ -->
+  <g>
+    <polygon points="620,300 980,300 980,620 620,620" fill="#1b1729"/>
+    <polygon points="640,320 960,320 960,600 640,600" fill="#3b3050" opacity="0.45"/>
+    <g stroke="#6b5f7a" stroke-width="4" opacity="0.35">
+      <line x1="620" y1="300" x2="980" y2="300"/>
+      <line x1="700" y1="300" x2="700" y2="620"/>
+      <line x1="800" y1="300" x2="800" y2="620"/>
+      <line x1="900" y1="300" x2="900" y2="620"/>
+      <line x1="620" y1="460" x2="980" y2="460"/>
+    </g>
+    <rect x="608" y="612" width="384" height="12" fill="#1b1729"/>
+    <path d="M600 622 q30 -34 64 -12 q26 -28 58 -8 q30 -26 60 -6 q28 -24 58 -6 q30 -22 58 -4 q30 -20 56 -2 q24 -14 46 2 l4 36 h-404 z"
+          fill="#0d0b14"/>
+    <path d="M622 620 q24 -22 50 -6 q26 -20 54 -4 q28 -18 54 -2 q28 -16 54 0 q26 -14 50 2 l2 22 h-264 z"
+          fill="#2a4d4d" opacity="0.4"/>
+    <g stroke="#6fb3a0" stroke-width="3" opacity="0.35" stroke-linecap="round">
+      <path d="M712 330 q4 40 -2 76"/>
+      <path d="M818 336 q-4 48 2 90"/>
+      <path d="M914 470 q4 44 -2 84"/>
+    </g>
+  </g>
+
+  <!-- ---- Roof structure ------------------------------------------------------ -->
+  <g fill="none" stroke="#3b3050" stroke-width="12" stroke-linecap="round">
+    <path d="M40 880 L40 330 L800 96 L1560 330 L1560 880"/>
+    <path d="M250 800 L250 350 L800 178 L1350 350 L1350 800"/>
+    <path d="M470 720 L470 380 L800 262 L1130 380 L1130 720"/>
+  </g>
+  <g fill="none" stroke="#6b5f7a" stroke-width="3" opacity="0.6" stroke-linecap="round">
+    <path d="M40 330 L800 96 L1560 330"/>
+    <path d="M250 350 L800 178 L1350 350"/>
+  </g>
+  <g stroke="#6b5f7a" stroke-width="2" opacity="0.35">
+    <line x1="145" y1="340" x2="145" y2="840"/>
+    <line x1="360" y1="365" x2="360" y2="760"/>
+    <line x1="1240" y1="365" x2="1240" y2="760"/>
+    <line x1="1455" y1="340" x2="1455" y2="840"/>
+  </g>
+
+  <!-- ---- The vent, and what waits above it ----------------------------------- -->
+  <ellipse cx="1150" cy="200" rx="170" ry="110" fill="url(#glass-ventglow)" pointer-events="none"/>
+  <g id="roof-vent">
+    <polygon points="1082,150 1218,150 1246,236 1054,236" fill="#3b3050"/>
+    <polygon points="1096,164 1204,164 1226,222 1074,222" fill="#05040a"/>
+    <polygon points="1096,164 1204,164 1226,222 1074,222" fill="#2a4d4d" opacity="0.5"/>
+    <polygon points="1210,150 1256,122 1268,134 1218,166" fill="#6b5f7a"/>
+    <g stroke="#2a4d4d" stroke-width="6" stroke-linecap="round">
+      <path d="M1120 168 q6 44 -8 84"/>
+      <path d="M1168 166 q-6 52 10 96"/>
+    </g>
+    <circle cx="1112" cy="252" r="6" fill="#6fb3a0" opacity="0.8"/>
+    <circle cx="1178" cy="266" r="5" fill="#6fb3a0" opacity="0.6"/>
+  </g>
+
+  <!-- ---- Floor ----------------------------------------------------------------- -->
+  <rect y="620" width="1600" height="280" fill="url(#glass-floor)"/>
+  <g stroke="#1b1729" stroke-width="2" opacity="0.6">
+    <line x1="0" y1="700" x2="1600" y2="700"/>
+    <line x1="0" y1="800" x2="1600" y2="800"/>
+    <line x1="200" y1="900" x2="620" y2="620"/>
+    <line x1="1400" y1="900" x2="980" y2="620"/>
+  </g>
+  <ellipse cx="800" cy="700" rx="420" ry="200" fill="url(#glass-moonwash)" pointer-events="none"/>
+
+  <!-- ---- The door back to the hall ----------------------------------------------- -->
+  <polygon points="392,470 560,500 560,740 392,760" fill="url(#glass-hallspill)" pointer-events="none"/>
+  <g id="door-hall">
+    <polygon points="256,380 396,404 396,742 256,768" fill="#544266"/>
+    <polygon points="268,396 384,418 384,730 268,752" fill="#3b3050"/>
+    <polygon points="268,396 296,401 296,747 268,752" fill="#1b1729"/>
+    <polygon points="368,414 384,418 384,730 368,734" fill="#f2c46b" opacity="0.6"/>
+    <circle cx="362" cy="576" r="6" fill="#f2c46b"/>
+    <g stroke="#2a4d4d" stroke-width="7" stroke-linecap="round" fill="none">
+      <path d="M262 420 q40 18 34 74"/>
+      <path d="M394 700 q-48 -8 -60 -54"/>
+    </g>
+  </g>
+
+  <!-- ---- The beds, left row --------------------------------------------------------- -->
+  <g id="beds">
+    <polygon points="96,806 560,668 560,712 96,866" fill="#1b1729"/>
+    <polygon points="96,806 560,668 542,650 110,780" fill="#3b3050"/>
+    <g id="beds-crowns">
+      <path d="M120 782 q28 -58 66 -22 q20 -44 58 -18 q26 -40 60 -12 q30 -36 62 -8 q34 -34 66 -4 q30 -28 56 -2 l-8 34 L128 812 Z"
+            fill="#2a4d4d"/>
+      <path d="M150 762 q22 -38 48 -12 q24 -30 52 -8 q28 -28 54 -4 q30 -26 56 0 l-6 24 L158 788 Z"
+            fill="#6fb3a0" opacity="0.3"/>
+      <circle cx="214" cy="742" r="5" fill="#6fb3a0" opacity="0.7"/>
+      <circle cx="330" cy="712" r="4" fill="#6fb3a0" opacity="0.6"/>
+      <circle cx="450" cy="684" r="5" fill="#6fb3a0" opacity="0.7"/>
+    </g>
+  </g>
+
+  <!-- Right row, scenery only -->
+  <g>
+    <polygon points="1504,806 1040,668 1040,712 1504,866" fill="#1b1729"/>
+    <polygon points="1504,806 1040,668 1058,650 1490,780" fill="#3b3050"/>
+    <path d="M1480 782 q-28 -58 -66 -22 q-20 -44 -58 -18 q-26 -40 -60 -12 q-30 -36 -62 -8 q-34 -34 -66 -4 q-30 -28 -56 -2 l8 34 L1472 812 Z"
+          fill="#2a4d4d"/>
+    <path d="M1450 762 q-22 -38 -48 -12 q-24 -30 -52 -8 q-28 -28 -54 -4 q-30 -26 -56 0 l6 24 L1442 788 Z"
+          fill="#6fb3a0" opacity="0.25"/>
+  </g>
+
+  <!-- ---- The tap ----------------------------------------------------------------------- -->
+  <g id="tap">
+    <rect x="584" y="552" width="66" height="196" rx="3" fill="#1b1729"/>
+    <rect x="588" y="556" width="58" height="188" rx="2" fill="#0d0b14"/>
+    <rect x="592" y="596" width="10" height="150" fill="#3b3050"/>
+    <rect x="588" y="740" width="18" height="8" fill="#1b1729"/>
+    <path d="M597 596 q0 -22 22 -22 h14 v12 h-14 q-10 0 -10 10 z" fill="#8f4a3c"/>
+    <rect x="629" y="580" width="10" height="16" rx="2" fill="#f2c46b" opacity="0.75"/>
+    <circle cx="622" cy="562" r="9" fill="#8f4a3c"/>
+    <circle id="tap-drop" cx="638" cy="606" r="5" fill="#d8d0c4" opacity="0"/>
+  </g>
+
+  <!-- ---- The bell jar --------------------------------------------------------------------- -->
+  <g id="bell-jar">
+    <polygon points="1032,652 1160,652 1172,700 1020,700" fill="#1b1729"/>
+    <polygon points="1032,652 1160,652 1156,640 1036,640" fill="#3b3050"/>
+    <path d="M1052 640 v-96 a44 46 0 0 1 88 0 v96 z" fill="#2a4d4d" opacity="0.5"/>
+    <path d="M1052 640 v-96 a44 46 0 0 1 88 0 v96" fill="none" stroke="#9a8fa8" stroke-width="4" opacity="0.7"/>
+    <circle cx="1096" cy="498" r="7" fill="#9a8fa8" opacity="0.8"/>
+    <ellipse id="jar-fog" cx="1096" cy="576" rx="36" ry="42" fill="#d8d0c4" opacity="0"/>
+    <ellipse cx="1096" cy="614" rx="18" ry="14" fill="#0d0b14"/>
+    <circle cx="1090" cy="608" r="2.5" fill="#6fb3a0"/>
+    <circle cx="1102" cy="608" r="2.5" fill="#6fb3a0"/>
+  </g>
+
+  <!-- ---- The pale fruit, for those who met the pale thing ------------------------------------ -->
+  <g id="pale-fruit">
+    <path d="M1330 236 q-6 60 4 108" fill="none" stroke="#2a4d4d" stroke-width="5" stroke-linecap="round"/>
+    <g opacity="0.85">
+      <ellipse cx="1336" cy="394" rx="15" ry="40" fill="#d8d0c4"/>
+      <circle cx="1336" cy="348" r="11" fill="#d8d0c4"/>
+      <circle cx="1332" cy="346" r="2" fill="#05040a"/>
+      <circle cx="1341" cy="346" r="2" fill="#05040a"/>
+    </g>
+  </g>
+
+  <!-- ---- Foreground leaves ---------------------------------------------------------------------- -->
+  <g pointer-events="none" fill="#05040a">
+    <path d="M-40 900 Q60 700 30 560 Q160 640 200 780 Q260 660 240 560 Q340 680 320 900 Z"/>
+    <path d="M1640 900 Q1560 720 1580 580 Q1460 660 1430 800 Q1360 680 1390 570 Q1290 700 1310 900 Z"/>
+    <path d="M700 900 Q740 830 730 780 Q790 820 800 880 Q850 830 850 790 Q900 850 880 900 Z" opacity="0.9"/>
+  </g>
+
+  <rect width="1600" height="900" fill="url(#glass-vignette)" pointer-events="none"/>
+</svg>

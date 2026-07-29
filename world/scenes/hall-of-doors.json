@@ -28,10 +28,9 @@
     },
     {
       "shape": "#door-ajar",
-      "label": "A door standing slightly ajar",
-      "action": "frontier",
-      "text": "It is open a finger's width, and the gap is slowly getting narrower.",
-      "hint": "Something breathing. A green light in the crack. Behind it: a grown space, wet and warm, or a greenhouse gone feral."
+      "label": "A door standing slightly ajar, green light in the crack",
+      "action": "goto",
+      "target": "glasshouse"
     },
     {
       "shape": "#door-handleless",

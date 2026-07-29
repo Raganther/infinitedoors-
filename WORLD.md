@@ -5,6 +5,31 @@ and the fastest way for a future run to see where it has been.
 
 ---
 
+## 2026-07-29 — EXPAND
+
+Opened **the door standing ajar** into `glasshouse`: warm, wet, and glazed
+against a night that has a garden on the wrong side of it — the canopy
+presses down on the roof from outside, and the open vent up there is today's
+frontier, packed too tight with green to pass. For now.
+
+Beds that breathe together and get you breathing with them. A bell jar that
+fogs from the inside, twice. A brass tap that drips upward, which is none of
+your business. And for players who met the pale thing in the wood: one fruit
+on the vine is the same colour, and the same shape, and it is facing you.
+
+The hall's ajar door now opens from both sides — from the glasshouse it leaks
+warm hall-light back through the crack, the only warm thing in the room
+besides the way you came.
+
+Housekeeping: the 06:13 firing died again with nothing pushed — it shares its
+dawn slot with a heavier 06:00 job on the same account and appears to starve.
+Moved the schedule to 03:37 UTC, the quietest hour the account has. This
+cycle was run by hand in the main session, per GROW.md.
+
+Scenes: 5 (+1) · Frontiers: 9 (±0) · Craft: 3.4
+
+---
+
 ## 2026-07-28 — EXPAND
 
 Opened **the treeline** out of the field into `wood-path`: the first room of

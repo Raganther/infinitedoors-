@@ -1,0 +1,55 @@
+{
+  "id": "glasshouse",
+  "title": "the glasshouse",
+  "art": "world/scenes/glasshouse.svg",
+  "region": "glasshouse",
+  "craft": 3,
+  "caption": "Warm in here, and wet. Everything is growing toward the door you came in by.",
+  "hotspots": [
+    {
+      "shape": "#door-hall",
+      "label": "The door back to the hall, ajar",
+      "action": "goto",
+      "target": "hall-of-doors"
+    },
+    {
+      "shape": "#beds",
+      "label": "The long planting beds",
+      "action": "animate",
+      "clip": "glass-breathe",
+      "clipMs": 3000,
+      "text": "The beds rise and fall together. After a moment you notice you have joined in.",
+      "sets": "breathed-with-the-garden"
+    },
+    {
+      "shape": "#bell-jar",
+      "label": "A bell jar on a low table",
+      "action": "animate",
+      "clip": "glass-fog",
+      "clipMs": 3000,
+      "text": "It fogs from the inside, twice. Something in there is keeping warm."
+    },
+    {
+      "shape": "#tap",
+      "label": "An old brass tap",
+      "action": "animate",
+      "clip": "glass-drip",
+      "clipMs": 2600,
+      "text": "The tap drips. Upward. You watch three drops go and decide it is none of your business."
+    },
+    {
+      "shape": "#roof-vent",
+      "label": "An open vent in the roof, dark green beyond",
+      "action": "frontier",
+      "text": "The vent stands open, but the green up there is packed too tight to pass. For now.",
+      "hint": "Up through the vent: the canopy floor — a landscape grown on top of the glasshouse roof, where the plants that left live now. The escaped collection, doing well. Verdigris on abyss, moonlit from much closer up."
+    },
+    {
+      "shape": "#pale-fruit",
+      "label": "A pale fruit on the vine",
+      "action": "text",
+      "requires": "saw-the-pale-thing",
+      "text": "One fruit is the same pale colour as the thing in the wood, and the same shape. It is facing you."
+    }
+  ]
+}
