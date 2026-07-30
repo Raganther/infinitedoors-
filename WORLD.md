@@ -5,6 +5,28 @@ and the fastest way for a future run to see where it has been.
 
 ---
 
+## 2026-07-30 — ENRICH
+
+The glasshouse went up a rung: 3 → 4, alive. Condensation crawls down the
+far panes on its own time. The canopy outside shifts its weight, slowly,
+the way something heavy asleep does. The vent's green glow breathes. Two
+dust motes hang in the one warm light from the hall door and will not
+settle. All of it slow, low-contrast, honest about being a damp room at
+night — and all of it still under `prefers-reduced-motion`.
+
+No hotspot moved, no composition re-staged, nothing added that speaks.
+Craft mean is 3.6 now, back over the 3.5 line, so tomorrow the rules point
+at EXPAND again.
+
+The scheduled run fired at its new quiet hour and still produced nothing —
+fourth silence. The trigger was rebuilt with push notifications so the
+owner sees completions and absences without asking; diagnosis continues in
+the fired sessions' own transcripts, which only the owner can open.
+
+Scenes: 5 · Frontiers: 9 · Craft: 3.6
+
+---
+
 ## 2026-07-29 — MECHANIC
 
 The world can be heard now. Everything audible is synthesized at play time

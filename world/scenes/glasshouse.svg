@@ -54,6 +54,45 @@
       12%      { opacity: 0.9; }
       100%     { transform: translateY(-240px); opacity: 0; }
     }
+
+    /* Ambient life — rung 4. Slow, low-contrast, and honest about being a
+       damp room at night: condensation crawls, the canopy shifts its weight,
+       the vent breathes, dust hangs in the one warm light. */
+    .glass-amb-drop { animation: glass-amb-drop 12s linear infinite; }
+    .glass-amb-drop.slow { animation-duration: 17s; animation-delay: -9s; }
+    .glass-amb-drop.late { animation-duration: 14s; animation-delay: -4s; }
+    @keyframes glass-amb-drop {
+      0%   { transform: translateY(0); opacity: 0; }
+      6%   { opacity: 0.45; }
+      88%  { opacity: 0.35; }
+      100% { transform: translateY(150px); opacity: 0; }
+    }
+
+    #canopy-inner { animation: glass-amb-sway 21s ease-in-out infinite; }
+    @keyframes glass-amb-sway {
+      0%, 100% { transform: translateX(0); }
+      50%      { transform: translateX(7px); }
+    }
+
+    #vent-glow { animation: glass-amb-vent 7.5s ease-in-out infinite; }
+    @keyframes glass-amb-vent {
+      0%, 100% { opacity: 0.3; }
+      50%      { opacity: 0.62; }
+    }
+
+    .glass-amb-mote { animation: glass-amb-mote 14s ease-in-out infinite; }
+    .glass-amb-mote.two { animation-duration: 18s; animation-delay: -7s; }
+    @keyframes glass-amb-mote {
+      0%   { transform: translate(0, 0); opacity: 0; }
+      18%  { opacity: 0.5; }
+      100% { transform: translate(16px, -110px); opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .glass-amb-drop, #canopy-inner, #vent-glow, .glass-amb-mote {
+        animation: none;
+      }
+    }
   </style>
 
   <!-- ---- Night through the glass ---------------------------------------- -->
@@ -67,7 +106,7 @@
              Q1130 198 1050 154 Q990 200 910 156 Q850 202 770 158 Q710 204 630 158
              Q570 202 490 156 Q430 198 350 152 Q290 194 210 148 Q150 188 70 144 Q30 164 0 150 Z"
           fill="#05040a"/>
-    <path d="M0 150 Q80 210 170 172 Q260 232 360 186 Q450 240 550 192 Q640 244 740 194
+    <path id="canopy-inner" d="M0 150 Q80 210 170 172 Q260 232 360 186 Q450 240 550 192 Q640 244 740 194
              Q830 246 930 196 Q1020 246 1120 196 Q1210 244 1310 192 Q1400 238 1500 186
              Q1560 216 1600 190 V60 H0 Z" fill="#2a4d4d" opacity="0.4"/>
     <g stroke="#2a4d4d" stroke-width="5" stroke-linecap="round" opacity="0.75">
@@ -98,6 +137,11 @@
       <path d="M818 336 q-4 48 2 90"/>
       <path d="M914 470 q4 44 -2 84"/>
     </g>
+    <g stroke="#9a8fa8" stroke-width="2.5" stroke-linecap="round" pointer-events="none">
+      <line class="glass-amb-drop" x1="668" y1="330" x2="668" y2="344"/>
+      <line class="glass-amb-drop slow" x1="770" y1="322" x2="770" y2="334"/>
+      <line class="glass-amb-drop late" x1="936" y1="326" x2="936" y2="340"/>
+    </g>
   </g>
 
   <!-- ---- Roof structure ------------------------------------------------------ -->
@@ -118,7 +162,7 @@
   </g>
 
   <!-- ---- The vent, and what waits above it ----------------------------------- -->
-  <ellipse cx="1150" cy="200" rx="170" ry="110" fill="url(#glass-ventglow)" pointer-events="none"/>
+  <ellipse id="vent-glow" cx="1150" cy="200" rx="170" ry="110" fill="url(#glass-ventglow)" pointer-events="none"/>
   <g id="roof-vent">
     <polygon points="1082,150 1218,150 1246,236 1054,236" fill="#3b3050"/>
     <polygon points="1096,164 1204,164 1226,222 1074,222" fill="#05040a"/>
@@ -144,6 +188,10 @@
 
   <!-- ---- The door back to the hall ----------------------------------------------- -->
   <polygon points="392,470 560,500 560,740 392,760" fill="url(#glass-hallspill)" pointer-events="none"/>
+  <g fill="#f2c46b" pointer-events="none">
+    <circle class="glass-amb-mote" cx="452" cy="640" r="2.5" opacity="0"/>
+    <circle class="glass-amb-mote two" cx="500" cy="600" r="2" opacity="0"/>
+  </g>
   <g id="door-hall">
     <polygon points="256,380 396,404 396,742 256,768" fill="#544266"/>
     <polygon points="268,396 384,418 384,730 268,752" fill="#3b3050"/>

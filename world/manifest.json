@@ -7,7 +7,7 @@
     "exits": 8,
     "interactions": 16,
     "frontiers": 9,
-    "craftMean": 3.4
+    "craftMean": 3.6
   },
   "regions": [
     "field",
@@ -17,7 +17,7 @@
     "wood"
   ],
   "nextEnrich": {
-    "scene": "glasshouse",
+    "scene": "ship-hold",
     "craft": 3,
     "raiseTo": 4
   },
@@ -43,7 +43,7 @@
       "id": "glasshouse",
       "title": "the glasshouse",
       "region": "glasshouse",
-      "craft": 3,
+      "craft": 4,
       "exits": [
         "hall-of-doors"
       ],

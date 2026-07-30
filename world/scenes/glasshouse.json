@@ -3,7 +3,7 @@
   "title": "the glasshouse",
   "art": "world/scenes/glasshouse.svg",
   "region": "glasshouse",
-  "craft": 3,
+  "craft": 4,
   "ambience": [
     "green-breathe",
     "moon-glass"
